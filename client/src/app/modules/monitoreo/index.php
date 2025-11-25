@@ -11,12 +11,12 @@ $user=$_SESSION['user'];?>
      <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Monitoreo de las medidas de mitigación</title>
-        <link rel="shortcut icon" href="../imagenes/icon.ico" /> 
+        <link rel="shortcut icon" href="../../../../public/assets/images/icon.ico" /> 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
    
-    <script src = "../js/jquery-3.3.1.min.js"></script> 
-    <script src = "../js/control_mon.js"></script> 
+    <script src = "../../scripts/jquery-3.3.1.min.js"></script> 
+    <script src = "../../scripts/control_mon.js"></script> 
   
     <script src = "js/jquery.validate.min.js"></script>
     <script src = "js/validar_eva.js"></script>
@@ -51,7 +51,7 @@ $user=$_SESSION['user'];?>
 
       <div>
 
-<?php require_once("../conex/conex.php");
+<?php require_once("../../config/conex.php");
 mysqli_select_db($conex, $database_conex);
 
 $query_pel = "SELECT IDEPRO,IDEREP,IDERIE,PROBRIE,GRARIE,DESPRO,MEDMON,FECMON,ESTMON,PROREV FROM REP,PEL,RIE,PRO,MONPRO WHERE IDEREP=REPPEL && REPPEL=PELRIE && IDERIE=RIEPRO && IDEPRO=MONPRO ORDER BY IDEREP";

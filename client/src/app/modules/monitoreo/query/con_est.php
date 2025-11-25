@@ -1,4 +1,4 @@
-<?php require_once("../../conex/conectar.php");
+<?php require_once("../../config/conectar.php");
 $con=conectar();
 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $monpro=$_GET['monpro'];

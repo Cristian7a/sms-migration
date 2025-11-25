@@ -1,4 +1,4 @@
-<?php require_once('../../conex/conex.php'); 
+<?php require_once('../../config/conex.php'); 
 mysqli_select_db($conex, $database_conex);
 
 $pla = $_POST["pla"];

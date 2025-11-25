@@ -16,14 +16,14 @@ if (isset($_SESSION["user"])){
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-<link rel='stylesheet' id='plantilla'  href='../../../styles/templates/plantilla.css' type='text/css' media='all' />
-<script src = "../../js/jquery-3.3.1.min.js"></script>
-<script src = "../../js/control.js"></script>
+<link rel='stylesheet' id='plantilla'  href='css/plantilla.css' type='text/css' media='all' />
+<script src = "../../../scripts/jquery-3.3.1.min.js"></script>
+<script src = "../../../scripts/control.js"></script>
 
 
 
 <?php
- $theme=$_SESSION['theme'];
+    $theme = isset($_SESSION['theme']);
       if($theme==1){
       include("menu.html");?>
        
@@ -71,7 +71,7 @@ $nivel=$_SESSION["nivel"];
     <br><br>
      <h2> Galeria</h2>
         <?php 
-        include("conex/conex.php");
+        include("config/conex.php");
      mysqli_select_db($conex, $database_conex);
    
 $query_img = "SELECT img FROM img WHERE asp_img=$user";

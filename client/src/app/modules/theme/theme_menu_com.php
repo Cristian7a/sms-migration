@@ -1,9 +1,9 @@
 <?php 
-require_once("conex/conex.php"); 
+require_once("config/conex.php"); 
 mysqli_select_db($conex, $database_conex);
 ?>
 <html>
-<link rel='stylesheet' id='plantilla'  href='css/plantilla.css' type='text/css' media='all' />
+<link rel='stylesheet' id='plantilla'  href='styles/templates/plantilla.css' type='text/css' media='all' />
 <div class="barra_login">
 <?php if ($_SESSION["foto"]==""){ ?>
 <div class="loginimage"><a href="fotos"><IMG height="35px" SRC="../../../../public/assets/images/usuario.png"></a></div> <?php }else { ?>
@@ -46,13 +46,13 @@ if ($totalRows_r > 0) {
 	$feclim=date("d-m-Y",strtotime($feclim));
     $hoy=date('d-m-Y');
     if($hoy>=$feclim){ ?>
-    	<div class="item item-red_alert"><a class="post-title" href="res"><IMG height="100px" SRC="imagenes/responsable.png"><br>Responsable</a></div>
+    	<div class="item item-red_alert"><a class="post-title" href="res"><IMG height="100px" SRC="../../../../public/assets/images/responsable.png"><br>Responsable</a></div>
    <?php }else{ ?>
-		<div class="item item-teal"><a class="post-title" href="res"><IMG height="100px" SRC="imagenes/responsable.png"><br>Responsable</a></div>
+		<div class="item item-teal"><a class="post-title" href="res"><IMG height="100px" SRC="../../../../public/assets/images/responsable.png"><br>Responsable</a></div>
 <?php } }?>
-<div class="item item-green2"><a class="post-title" href="juntas/participante.php"><IMG height="100px" SRC="imagenes/menu_inv.png"><br>Juntas de Control</a></div>
+<div class="item item-green2"><a class="post-title" href="juntas/participante.php"><IMG height="100px" SRC="../../../../public/assets/images/menu_inv.png"><br>Juntas de Control</a></div>
 
-<div class="item item-gray"><a class="post-title" href="ajustes"><IMG height="90%" SRC="imagenes/conf.png">Ajustes</a></div>
+<div class="item item-gray"><a class="post-title" href="ajustes"><IMG height="90%" SRC="../../../../public/assets/images/conf.png">Ajustes</a></div>
 <!--
 <div class="item item-green" ><a class="post-title" href="reportes_i"><IMG height="100px" SRC="imagenes/menu_rep.png">Exámenes</a></div>
 -->

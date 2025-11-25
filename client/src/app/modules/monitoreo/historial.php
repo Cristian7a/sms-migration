@@ -15,8 +15,8 @@ $monpro=$_GET['monpro'];?>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
    
-    <script src = "../js/jquery-3.3.1.min.js"></script> 
-    <script src = "../js/control_mon.js"></script> 
+    <script src = "../../scripts/jquery-3.3.1.min.js"></script> 
+    <script src = "../../scripts/control_mon.js"></script> 
   
     <script src = "js/jquery.validate.min.js"></script>
     <script src = "js/validar_eva.js"></script>
@@ -36,7 +36,7 @@ $monpro=$_GET['monpro'];?>
       
       <div>
 
-<?php require_once("../conex/conex.php");
+<?php require_once("../../config/conex.php");
 mysqli_select_db($conex, $database_conex);?>
 
 

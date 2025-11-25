@@ -1,5 +1,5 @@
 <?php
-require_once('../conex/conex.php'); 
+require_once('../config/conex.php'); 
 mysqli_select_db($conex, $database_conex);
 session_start();
 $user=$_SESSION['user'];

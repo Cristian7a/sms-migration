@@ -7,10 +7,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="theme_2/css/fuente.css">
-        <link rel="stylesheet" href="theme_2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="theme_2/css/font-awesome.min.css">
-        <link rel="stylesheet" href="theme_2/css/style.css">
+		<link rel="stylesheet" href="../../styles/theme_2/css/fuente.css">
+        <link rel="stylesheet" href="../../styles/theme_2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../styles/theme_2/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../styles/theme_2/css/style.css">
         
     </head>
 <body >
@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12">
 				<div class="lft_hd">
-					<a href="index.php"><img src="imagenes/heli.png" alt=""/></a>
+					<a href="index.php"><img src="../../public/assets/images/heli.png" alt=""/></a>
 				</div>
 			</div>			
 			<div class="col-lg-9 col-md-9 col-sm-12">
@@ -43,7 +43,7 @@
 						
 						<div id="navbar">
 							<ul>
-								<li><a class="page-scroll" href="conex/logout.php">Cerrar sesión</a></li>
+								<li><a class="page-scroll" href="config/logout.php">Cerrar sesión</a></li>
 							</ul>
 						</div>		
 						</nav>			
@@ -197,14 +197,14 @@
 <!-- End Service Section -->
 
 
-<?php include("theme_2/pie.html"); ?>
+<?php include("styles/theme_2/pie.html"); ?>
 
-<script type="text/javascript" src="theme_2/js/jquery-1.9.1.min.js"></script>
-<script src="theme_2/js/isotope.pkgd.min.js"></script>
-<script src="theme_2/js/owl.carousel.min.js"></script>
-<script src="theme_2/js/jquery.nicescroll.min.js"></script>
-<script src="theme_2/js/main.js"></script>
-<script src="theme_2/js/carga_index.js"></script>
+<script type="text/javascript" src="../../styles/theme_2/js/jquery-1.9.1.min.js"></script>
+<script src="../../styles/theme_2/js/isotope.pkgd.min.js"></script>
+<script src="../../styles/theme_2/js/owl.carousel.min.js"></script>
+<script src="../../styles/theme_2/js/jquery.nicescroll.min.js"></script>
+<script src="../../styles/theme_2/js/main.js"></script>
+<script src="../../styles/theme_2/js/carga_index.js"></script>
 
 
 
