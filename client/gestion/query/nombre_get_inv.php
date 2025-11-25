@@ -1,0 +1,16 @@
+                       <?php
+require_once("../../conex/conex.php"); 
+mysqli_select_db($conex, $database_conex);
+$coo=$_REQUEST['area'];
+                        $query_emp = "SELECT APPEMP,APMEMP,NOMEMP,IDEPER,NOMCAR FROM PER,EMP,CAR WHERE EMPPER=IDEEMP && CARPER=IDECAR && COOCAR='$coo' && FECFIN IS NULL or NOMCAR='SUPERVISOR' && EMPPER=IDEEMP && CARPER=IDECAR && COOCAR='$coo' && FECFIN IS NULL ORDER BY IDECAR";
+                        $emp = mysqli_query($conex, $query_emp) or die(mysqli_error());
+                        $row_emp = mysqli_fetch_assoc($emp);
+                        $totalRows_emp = mysqli_num_rows($emp);
+                        if ($totalRows_emp == 0) {?>
+                             <option value="">No hay empleados disponibles</option>
+                        <?php }
+                        if ($totalRows_emp > 0) {
+                        do { 
+                        ?>
+                        <option value="<?php echo ($row_emp['IDEPER']); ?>"><?php echo utf8_encode(($row_emp['NOMEMP'].' '.$row_emp['APPEMP'].' '.$row_emp['APMEMP'].' / '.$row_emp['NOMCAR'])); ?></option>
+                        <?php } while ($row_emp = mysqli_fetch_assoc($emp)); }?>

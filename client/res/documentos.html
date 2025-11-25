@@ -1,0 +1,35 @@
+ <div class="ven_modal" id="_1">
+ <div class="cerrar"><a href="javascript:cerrarventana('.ventana');">x</a></div>
+ <br> 
+ <center>     
+<h2> Documentos que le dan soporte <br>a la medida de mitigación</h2>
+</center> 
+<hr>
+<div style='height:100px;overflow-y: scroll;'>
+<table >
+	<thead><tr>
+	    <td>Nombre del documento:</td>
+       <td>Estado:</td>
+       <td></td></tr></thead>
+	<tbody id="documentos">
+	</tbody>
+
+</table>
+</div>
+<hr>
+<h2> Subir nuevo documento</h2>
+ <form method="post" id="form_doc"  action="query/alta_doc.php" name="form_doc" enctype="multipart/form-data">
+   <table>
+   	<tr><td>Nombre del doc.</td><td><input type="text" id="nom" name="nom" /></td></tr>
+   	<tr><td>Subir </td><td><input type="file" id="doc" name="doc" /></td></tr>
+    <tr><td></td><td><input type="hidden" id="IDERES" name="IDERES" value="" /></td></tr>
+   </table>
+   <p><b>Nota: </b> Verifique que el documento que elabore cuente con:<br>
+   Fecha del reporte que lo origina<br> 
+   El motivo de porque se toman las acciones de seguridad operacional<br>
+   Las razones de porque los procedimientos de seguridad han sido incorporados o cambiados  </p>
+   <input type="submit" class="boton"  value="Subir" name="enviar_doc" id="enviar_doc">
+</form>
+ </div>
+
+ 

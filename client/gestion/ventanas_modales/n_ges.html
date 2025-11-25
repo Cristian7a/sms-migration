@@ -1,0 +1,125 @@
+ <div class="ven_modal" id="_1">
+  <script src = "../js/jquery-3.3.1.min.js"></script>
+  <script src = "js/jquery.validate.min.js"></script>
+<script src = "js/validar_ges.js"></script>
+  <div class="cerrar"><a href="../reportes" style="font-size:1.3em;">Cancelar</a></div>
+      <form method="post" id="form_ges"  action="" name="form_ges">
+
+                 
+                 <br>
+                 <!-- TABLA DE AYUDA DE DATOS DEL REPORTE
+                    <h3>Datos del reporte</h3>
+                   <hr>
+                    <table id="dat">
+                      </table>-->
+                      <br>
+                    <h3>Gesti&#243;n del peligro</h3>
+                   <hr>
+                   <br>
+                    <table class="tabla_ven">
+                        <tr>
+                            <td >Condición:</td>
+                            <td width="400px"><input type="text" id="con" name="con" /></td>
+                        </tr>
+                        <tr>
+                            <td>Objeto:</td>
+                            <td><input type="text" id="obj" name="obj" /></td>
+                        </tr>
+                        <tr>
+                            <td>Actividad:</td>
+                            <td><input type="text" id="act"  name="act" /></td> 
+                        </tr>
+
+                        <tr>
+                            <td>Métodos de identificacion:</td>
+                   <td>
+                        <select id="met_ide" name="met_ide">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="REACTIVO">REACTIVO</option>
+                             <option value="PROACTIVO">PROACTIVO</option>
+                            
+                          </select></td>
+                          
+                        </tr>
+
+                         <!-- SE CALCULARA DESDE LA TAXONOMIA -->
+                        <tr>
+                            <td>Categoría del peligro:</td>
+                      
+                        <td><select id="cat" name="cat">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="NATURAL">NATURAL</option>
+                             <option value="TÉCNICO">TÉCNICO</option>
+                             <option value="ECONOMICO">ECONÓMICO</option>
+
+                          </select></td>
+ 
+                        </tr> 
+
+                        <!-- SE CALCULARA DESDE LA TAXONOMIA -->
+                        <tr>
+                            <td>Riesgo operacional:</td>
+                        
+                        <td><select id="rie_ope" name="rie_ope">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="SI">SI</option>
+                             <option value="NO">NO</option>
+                            
+                          </select></td>
+                         
+                        </tr> 
+
+                        <!-- TAXONOMIA -->
+                        <tr>
+                            <td>Tipo de operación:</td>
+                      
+                        <td><select id="top" name="top">
+                           
+                          </select></td>
+ 
+                        </tr> 
+                        <tr>
+                            <td>Tipo de actividad:</td>
+                      
+                        <td><select id="tac" name="tac">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             
+
+                          </select></td>
+ 
+                        </tr> 
+
+
+                       
+                        <tr>
+                            <td>Peligro genérico:</td>
+                        <td><select id="ide_gen" name="ide_gen">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                          </select><a id="agregar_taxo" href="">+ Agregar peligro genérico</a>
+                          <!--<input type="text" id="ide_gen" name="ide_gen" />--></td>
+                      </tr>
+                      
+                        <tr>
+                            <td><input type="hidden" id="IDEREP1" name="IDEREP1"  /></td>
+                      <td>
+                    <div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_ges" id="enviar_ges">
+          </div> </td></tr>
+        </table>
+       
+     
+
+    
+
+          
+
+
+      </form>
+  </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEREP');
+ nuevo_id('IDEREP1',id);
+ cargar_top('top');
+
+</script>
+ </div>

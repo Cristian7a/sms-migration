@@ -1,0 +1,74 @@
+
+<div class="ven_modal" id="_3">
+  <div class="cerrar"><a href="javascript:cerrarventana('.ventana_2');">x</a></div>
+      <form method="post" id="form_compo"  action="" name="form_compo">
+      <br>
+      <br>
+                    <h3>Nuevo componente especifico del peligro</h3>
+                   <hr>
+                    <table class="tabla_ven">
+                        <tr>
+                            <td width="180px">Componente especifico:</td>
+                            <td width="300px"><input type="text" id="com" name="com" /></td>
+                        </tr>
+                        <tr>
+                            <td >Descripci&#243;n exacta:</td>
+                            <td><input type="text" id="des" name="des" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>Consecuencias:</td>
+                            <td><input type="text" id="cons" name="cons" /></td>
+                        </tr>
+                        <tr>
+                            <td>Probabilidad:</td>
+                   <td>
+                        <select id="pro" name="pro">
+                            <option selected="selected" value="">--elegir--</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                          </select></td>
+                          
+                        </tr>
+                        <tr>
+                            <td>Gravedad:</td>
+                
+                         <td>
+                        <select id="gra" name="gra">
+                            <option selected="selected" value="">--elegir--</option>
+                             <option value="A">A</option>
+                             <option value="B">B</option>
+                             <option value="C">C</option>
+                             <option value="D">D</option>
+                             <option value="E">E</option>
+                          </select>
+                        </td>
+ 
+                        </tr>
+                        
+                        <tr>
+                            <td><input type="hidden" id="IDEREP2" name="IDEREP2" value="0" /></td>
+                      <td>
+                    <div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_compo" id="enviar_compo">
+          </div> </td></tr>
+        </table>
+       
+     
+
+    
+
+          
+
+
+      </form>
+  </div>
+
+ </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEREP');
+ nuevo_id("IDEREP2",id);
+</script>

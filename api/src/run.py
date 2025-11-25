@@ -1,7 +1,11 @@
-from src import create_app
+# api/src/run.py
+from src import create_app # Asumiendo que tu __init__.py tiene un create_app
+from src.routes.reportes_routes import reportes_bp
 
 app = create_app()
 
-if __name__ == '__main__':
-    # Ejecuta el servidor en el puerto 5000
-    app.run(host='0.0.0.0', port=5000, debug=True)
+# Registramos las rutas nuevas
+app.register_blueprint(reportes_bp, url_prefix='/api/v1/reportes')
+
+if __name__ == "__main__":
+    app.run(debug=True)

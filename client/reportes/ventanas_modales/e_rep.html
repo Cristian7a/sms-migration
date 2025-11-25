@@ -1,0 +1,57 @@
+<div class="ventana_2"><div class="ven_modal" id="_2">
+<div class="cerrar"><a href="javascript:cerrarventana('.ventana_2');">x</a></div>
+
+ <form method="post" id="formregistro"  action="query/mod_rep.php" name="formregistro">
+  
+             
+                    
+                    <h3>Editar Reporte:</h3>
+                    <hr>
+                    <table id="edi_rep">
+                        <tr>
+                            <td>Areá:</td>
+                            <td><select id="area_e" name="area_e" >
+                      </select></td></tr>
+
+                        <tr>
+                            <td>Empleado:</td>
+                             <td><select id="emp_e" name="emp_e" >
+                            <option  selected="selected" value="">--elegir--</option></select></td></tr>
+                            
+                        <tr id="conf">
+                        </tr>
+                        <tr id="fece">
+                        </tr>
+                        <tr id="fecr">
+                        </tr>
+        
+                        <tr>
+                            <td>Lugar del suceso:</td>
+                            <td> <select id="lugsus_e" name="lugsus_e">
+                        </select><a href="javascript:openventana('.ventana_3');">Nuevo lugar</a> </td>
+                    
+                        </tr>
+                        
+                         
+                        <tr id="obse">
+                        
+                        </tr>
+                        <tr id="frec">
+                           
+                        </tr>
+                        <tr>
+                            <td>Cancelar reporte:</td>
+                             <td> <select id="canrep_e" name="canrep_e">
+                            
+                        </select></td>
+                        </tr>
+
+                         <tr>
+                            <td><input type="hidden" id="IDREP" name="IDREP" value="0" /></td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar" id="enviar">
+        
+    <input type="submit" class="boton"  value="Eliminar reporte" name="eliminar" id="eliminar" style="background-color: #cb4335 "></div></td></tr>
+ </table>      
+      </form>
+      </div></div>

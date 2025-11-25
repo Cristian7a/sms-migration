@@ -1,0 +1,44 @@
+ <div class="ven_modal" id="_3" >
+  <div class="cerrar"><a href="javascript:cerrarventana('.ventana_6');">x</a></div>
+  <script type="text/javascript">
+ var id = getParameterByName('IDEREP');
+ cargar_editar_monitoreo(id);
+  
+</script>
+      <form method="post" id="form_mon"  action="query/mod_mon.php" name="form_mon">
+                    <br>
+                    <br>
+                    <h3>Monitoreo del peligro</h3>
+                   <hr>
+                    <table class="tabla_ven" >
+                        <tr>
+                            <td>Medio de difusión empleado para la medida de mitigación:</td>
+                      
+                        <td id="dif"></td>
+ 
+                        </tr>
+                        <tr>
+                            <td>Fecha de difusión:</td>
+                        <td id="fec"></td>
+                      </tr>
+                        <tr>
+                            <td><input type="hidden" id="PELMON" name="PELMON"  /></td>
+                      <td>
+                    <div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_mon" id="enviar_mon">
+          </div> </td></tr>
+        </table>
+       
+     
+
+    
+
+          
+
+
+      </form>
+  </div>
+<SCRIPT TYPE="text/javascript">
+nuevo_id('PELMON',id);
+</SCRIPT>
+ </div>

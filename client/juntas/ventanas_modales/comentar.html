@@ -1,0 +1,46 @@
+<div class="ven_modal" id="_3">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_4');">x</a></div>
+
+ <form method="post" id="form_comen"  action="query/alta_com.php" name="form_comen">
+  
+                    <br>
+                    <h2>Comentar:</h2>
+                    <table id="pro_pri"></table>
+                    <hr>
+                    <!--
+                    <div style='height:250px;overflow-y: scroll; width=50px;'>
+                    <table id="dat_com">
+
+                    </table>
+                  </div>
+                  <br>-->
+                    <table>
+                        <tr>
+                            <td width="100px"></td>
+                             </tr>
+                              <tr> <td>
+                              <textarea id="comentario" name="comentario" cols="50px"></textarea>
+                           </td>
+                        </tr>
+                      
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEJUN4" name="IDEJUN4" value="0" />
+                              <input type="hidden" id="IDEPRO4" name="IDEPRO4" value="0" />
+                              <div class="buttons">
+            <input type="submit" class="boton"  value="Comentar" name="enviar_comen" id="enviar_comen">
+            <!--<input type="submit" class="boton"  value="Aceptar" name="enviar_comen_aceptar" id="enviar_comen_aceptar">-->
+            
+           <!--  <input type="submit" class="boton"  value="Aceptar" name="enviar_comen" id="ACEPTO">-->
+        </div>
+    </td></tr>
+ </table>
+
+      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id2 = getParameterByName('IDEJUN');
+ nuevo_id("IDEJUN4",id2);
+
+</script>

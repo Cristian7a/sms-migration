@@ -1,0 +1,40 @@
+
+        <header>
+<div class="back"><a href="../app.php"><IMG height="35px" SRC="../imagenes/regresar.png"></a></div>
+	<div class="backtitulo"><h3> Involucrado en reunión de reporte o reunión extraordinaria</h3></div> 
+    
+	<div class="menu_bar">
+		<a href="#" class="bt_menu"><span class="icon-menu"></span>&nbsp;</a>
+	</div>
+
+<nav >
+<ul>
+</ul>
+</nav>
+
+<script type="text/javascript">
+$(document).ready(main);
+ 
+var contador = 1;
+ 
+function main(){
+	$('.menu_bar').click(function(){
+		// $('nav').toggle(); 
+ 
+		if(contador == 1){
+			$('nav').animate({
+				left: '0'
+			});
+			contador = 0;
+		} else {
+			contador = 1;
+			$('nav').animate({
+				left: '-100%'
+			});
+		}
+ 
+	});
+ 
+};
+</script>
+</header>

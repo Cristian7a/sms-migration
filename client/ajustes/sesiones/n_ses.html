@@ -1,0 +1,48 @@
+<div class="ven_modal">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana');">x</a></div>
+
+ <form method="post" id="form_ses"  action="" name="form_ses" >
+  
+             
+                    
+                    <h3>Crear sesión:</h3>
+                    <hr>
+                    <table>
+                        
+                        <tr>
+                            <td>Area:</td>
+                             <td><select id="area" name="area">
+                           
+                      </select> </td>
+                        </tr>
+                        <tr>
+                            <td>Empleado:</td>
+                             <td > <select id="emp" name="emp">
+                           
+                      </select></td>
+                        </tr>
+                        <tr>
+                            <td>Nivel de privilegios:</td>
+                             <td> <select id="pri" name="pri">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="1">ADMINISTRADOR</option>
+                             <option value="2">USUARIO SMS</option>
+                             <option value="3">DIFUSIÓN</option>
+                             <option value="4">USUARIO NORMAL</option>
+                          </select></td>
+                        </tr>
+                        <tr>
+                            <td>Contraseña:</td>
+                             <td> <input type="text" id="pass" name="pass" /></td>
+                        </tr>
+
+
+                         <tr>
+                            <td></td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Crear" name="enviar" id="enviar">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>

@@ -1,0 +1,197 @@
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+* {margin:0;padding:0;}
+body {font-family:sans-serif;}
+  
+ h2{color:#008299; }  
+ .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #008299;
+    width: 98%;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    font-weight:600;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: #fff;
+    font-size:.85em;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #008fff;
+    color: #fff;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #008eee;
+    color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    width: 98%;
+    font-size:.75em;
+}
+
+.reporte {width:100%;font-family:Segoe UI,Arial,sans-serif;font-size:.99em;}
+.reporte a, .reporte .not-found {color:#000;font-size:1em;line-height:1.3;display:inline-block;}
+.reporte input[type=text], .reporte.not-found {width:100%;height:30px;}
+.boton{ 
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color:#008299;
+  }
+.back {width:3.8em;height:4em;float:left;background-size:cover;padding:1em;}
+.backtitulo {width:auto;height:4em;float:left;padding-top:1.3em;}
+.backtitulo h3, .backtitulo .not-found {color:#FFF;font-size:1.4em;}
+.menuitem {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menudrop {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menu_bar {display:none;}
+header{width: 100%;}
+header nav {width:100%;width:100%;height:4.1em;background-color:#008299;}
+nav a {color:#FFF;font-size:1.1em;line-height:1.3;text-decoration:none;}
+header nav ul { overflow:hidden;list-style:none;}
+header nav ul li {float:right;}  
+
+
+
+.ventana, .ventana_2, .ventana_3, .ventana_4, .ventana_5, .ventana_6, .ventana_7, .ventana_8, .ventana_9,  .ventana_9_5, .ventana_10, .ventana_11, .ventana_12, .ventana_13, .ventana_14, .ventana_15, .ventana_16, .ventana_17, .ventana_18, .ventana_19, .ventana_20, .ventana_21, .ventana_22{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.ven_modal{
+  height: auto;
+  width: auto;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  margin-left: -175px;
+  margin-top: -155px;
+}
+
+#_1{top:38%;left:30%;}
+#_2{top:40%;left:48%;}
+#_3{top:40%;left:38%;}
+#_4{top:38%;left:36%;}
+#_5{top:40%;left:44%;}
+#_6{top:38%;left:20%;}
+
+.ventana td, .ventana .not-found{border-bottom: 0px solid #000;}
+.ventana_2 td, .ventana_2 .not-found{border-bottom: 0px solid #000;}
+.ventana_3 td, .ventana_3 .not-found{border-bottom: 0px solid #000;}
+.ventana_4 td, .ventana_4 .not-found{border-bottom: 0px solid #000;}
+.ventana_5 td, .ventana_5 .not-found{border-bottom: 0px solid #000;}
+.ventana_6 td, .ventana_6 .not-found{border-bottom: 0px solid #000;}
+.ventana_7 td, .ventana_7 .not-found{border-bottom: 0px solid #000;}
+.ventana_8 td, .ventana_8 .not-found{border-bottom: 0px solid #000;}
+.campo td, .campo .not-found{border-bottom: 0px solid #000;}
+.cerrar {text-align: right;margin-bottom: -20px;}
+.cerrar a{
+  color: red;
+  font-weight: 700;
+  font-size: 1.5em;
+  text-decoration:none;
+}
+
+.subtabla td{
+border-bottom: 1px solid #fff;
+}
+.tabla {margin-top:.1em; }
+ input[type=text]{width:100%;}
+ select{width:100%;}
+.reporte thead {background:#16365C;color: #fff;}
+
+table {
+   width: 97%;
+   font-size:.85em;
+   
+}
+
+table a{text-decoration:none; }
+td{
+   border-collapse: separate;
+   border-spacing: 5px;
+   background:#fff;
+   border-bottom: 1px solid #000;
+
+}
+
+.ven_modal td{
+      border-bottom: 0px solid #000;}
+
+.f2 {width:100%;font-family:Segoe UI,Arial,sans-serif;font-size:.8em;float:left;}
+.f2 h1,h2{color:#008299;}
+.fila {width:100%;margin:.1em; float:left;}
+.columna {width:70%;margin:.1em; margin-left:5em; float:left;}
+.campo {width:100%;margin:.2em; float:left;}
+.campo p, .campo .not-found {color:#000;font-size:1.2em;line-height:.1;display:inline-block;}
+
+
+@media screen and (max-width:800px ) {
+  header nav {
+    width:80%;
+    height:100%;
+    left:-100%;
+    position: fixed;
+  }
+  header nav ul li {
+    display:block;
+    float:none;
+    border-bottom:1px solid rgba(255,255,255, .3);
+  }
+  .menu_bar {
+    display:block;
+    width:100%;
+    background:#008299;
+  }
+  .menu_bar .bt_menu {
+    display:block;
+    padding:20px;
+    color:#fff;
+    text-decoration:none;
+    font-weight: bold;
+    font-size:25px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  .menu_bar span {
+    float:right; font-size:40px;  
+  }
+  .ven_modal{
+  height: auto;
+  width: 100%;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;}
+  #_1{top:35%;left:49%;}
+  #_2{top:35%;left:49%;}
+  #_3{top:40%;left:49%;}
+  #_4{top:38%;left:36%;}
+  #_5{top:40%;left:44%;}
+  #_6{top:38%;left:20%;}
+}

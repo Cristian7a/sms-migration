@@ -1,0 +1,21 @@
+
+<header>
+<div class="back"><a href="index.php"><IMG height="35px" SRC="../imagenes/regresar.png"></a></div>
+	<div class="backtitulo"><h3>Junta de control</h3></div> 
+    
+	<div class="menu_bar">
+		<a href="#" class="bt_menu"><span class="icon-menu"></span>&nbsp;</a>
+	</div>
+
+<nav>
+<ul>
+<?php if($_SESSION["nivel"]<>2) { ?>
+<?php } ?>
+<li class="menuitem"><a href="../pdf/minuta_jc.php?IDEJUN=<?php echo $idejun; ?>" title="Imprimir minuta">Imprimir minuta</a></li>
+<li class="menuitem"><a href="../pdf/lista_jc.php?IDEJUN=<?php echo $idejun; ?>" title="Imprimir lista de asistencia">Imprimir lista de asistencias</a></li>
+
+</ul>
+</nav>
+
+
+</header>

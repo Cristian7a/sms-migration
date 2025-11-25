@@ -1,0 +1,112 @@
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+body {font-family:Segoe UI,Arial,sans-serif;}
+ 
+
+.reporte {width:99%;margin:.1em;font-family:Segoe UI,Arial,sans-serif;font-size:99em;}
+.ventana{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+.ventana_2{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+.ven_modal{
+  height: auto;
+  width: auto;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  top:35%;
+  left:40%;
+  position: absolute;
+  margin-left: -175px;
+  margin-top: -175px;
+}
+.ventana td, .ventana .not-found{border-bottom: 0px solid #000;}
+.ventana_2 td, .ventana_2 .not-found{border-bottom: 0px solid #000;}
+.cerrar{
+  color: red;
+  font-weight: 500;
+  text-align: right;
+  height: 5px;
+}
+.formulario {width:100%;font-family:Segoe UI,Arial,sans-serif;font-size:.9em;float:left;background-color:#efe8ff
+}
+
+
+.boton_red{ 
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color:#AC193D;
+  }
+  
+.menu_red{width:100%;height:4.1em;background-color:#AC193D;}
+
+.back {width:3.8em;height:1em;float:left;background-size:cover;padding:1em;}
+.backtitulo {width:auto;height:4em;float:left;}
+.backtitulo h3, .backtitulo .not-found {color:#FFF;font-size:1.4em;}
+.menuitem {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menudrop {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+      ul, ol, li {
+        list-style:none;
+      }
+      .nav > li {
+        float:left;
+      }
+       .nav li:hover > ul {
+        display:block;
+      }
+      .nav li a {
+        color:#fff;
+        text-decoration:none;
+        padding-bottom:10px;
+        padding-right: 20px;
+        padding-top:-30px;
+        display:block;
+      }
+   
+      .nav li ul {
+        display:none;
+        position:absolute;
+        background-color:#8C0095;
+      }
+      
+ 
+.menu_red a, .menu_red .not-found {color:#FFF;font-size:1.1em;line-height:1.3;text-decoration:none;display:inline-block;width:100%;height:100%;}
+
+.tabla {margin-top:1em;}
+
+table {
+   width: 95%;
+   
+}
+th{
+  border-bottom: 1px solid #000;  
+}
+
+.tabla td{
+  
+  border-bottom: 1px solid #000;  
+   border-collapse: separate;
+   background:#fff;
+}
+
+
+
+

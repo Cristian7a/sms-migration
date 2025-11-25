@@ -1,0 +1,36 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_12');">x</a></div>
+
+ <form method="post" id="formregistro"  action="query/mod_pro.php" name="formregistro">
+  
+                    
+                    <br>
+                    <br>
+                    <h3>Editar Propuesta de Medida de Mitigación:</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td width="20%">Descripción:</td>
+                            <td  >
+                              <textarea id="des_e" name="des_e" cols="30%" ></textarea>
+                           </td>
+                        </tr>
+                      
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDREP_PRO" name="IDREP_PRO" value="0" />
+                              <input type="hidden" id="IDRIE_PRO" name="IDRIE_PRO" value="0" />
+                              <input type="hidden" id="IDPRO" name="IDPRO" value="0" /></td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar" id="enviar">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDERIE');
+ var id2 = getParameterByName('IDEREP');
+ nuevo_id("IDRIE_PRO",id);
+ nuevo_id("IDREP_PRO",id2);
+</script>

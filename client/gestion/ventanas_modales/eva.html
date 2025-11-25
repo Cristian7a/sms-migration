@@ -1,0 +1,44 @@
+<div class="ven_modal" id="_3">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_14');">x</a></div>
+
+ <form method="post" id="form_rev_eva"  action="" name="form_rev_eva">
+  
+  
+                    <br>
+                    <br>
+                    <h3>Reevaluación del riesgo de la consecuencia con la o las medidas de mitigación:</h3>
+                    <hr>
+                    <table >
+                         <tr>
+                            <td>Probabilidad:</td>
+                             <td> <select id="pro_rev" name="pro_rev">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                          </select></td>
+                        </tr>
+                        <tr>
+                            <td>Gravedad:</td>
+                            <td> <select id="gra_rev" name="gra_rev">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="A">A</option>
+                             <option value="B">B</option>
+                             <option value="C">C</option>
+                             <option value="D">D</option>
+                             <option value="E">E</option>
+                          </select></td>
+                        </tr>
+                         <tr>
+                            <td><input type="hidden" id="IDRIEEVA" name="IDRIEEVA" value="" /></td>
+                            <td><input type="hidden" id="IDREPEVA" name="IDREPEVA" value="<?php echo $ide; ?>" /></td>
+
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_rev_eva" id="enviar_rev_eva">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>

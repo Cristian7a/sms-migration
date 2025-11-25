@@ -1,0 +1,42 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_20');">x</a></div>
+
+ <form method="post" id="form_min"  action="../pdf/minuta.php" name="form_min">
+  
+             
+                    <br>
+                    <br>
+                    <h3>Generar minuta:</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td>Folio:</td>
+                            <td><input type="number" id="fol_min" name="fol_min" min="1" value="<?php echo $iderep; ?>" ></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha:</td>
+                            <td><input type="date" id="fec_min" name="fec_min"></td>
+                        </tr>
+                        <tr>
+                            <td>Hora de inicio:</td>
+                             <td><input type="time" id="ini_min" name="ini_min"></td>
+                        </tr>
+                        <tr>
+                            <td>Hora de cierre:</td>
+                             <td><input type="time" id="cie_min" name="cie_min"></td>
+                        </tr>
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEREP_min" name="IDEREP_min" value="0" /></td>
+
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Generar" name="enviar_min" id="enviar_min">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEREP');
+ nuevo_id("IDEREP_min",id);
+</script>

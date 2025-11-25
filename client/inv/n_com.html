@@ -1,0 +1,13 @@
+ <div class="ven_modal">
+ <div class="cerrar"><a href="javascript:cerrarventana('.ventana_2');">Cancelar</a></div>
+<br>
+<h2>Rechazar propuestas</h2>
+ <form method="post" id="formregistro"  action="query/alta_com.php" name="formregistro">
+   <textarea id="com" name="com" cols="50px" style="font-family:Segoe UI,Arial,sans-serif;font-size:1em;"> </textarea>
+   <input type="hidden" id="IDEREP" name="IDEREP" value="<?php echo $iderep;?>"/>
+   <input type="hidden" id="IDEPRO" name="IDEPRO" value="<?php echo $idepro;?>"/>
+   <input type="hidden" id="IDERIE" name="IDERIE" value="<?php echo $iderie;?>"/>
+   <p><b>Nota: </b> Comenta la propuesta en la que estas en desacuerdo y la<br> propuesta correspondiente con las modificaciones que hayas considerado </p>
+   <input type="submit" class="boton"  value="Aceptar" name="enviar" id="enviar">
+</form>
+ </div>

@@ -1,0 +1,20 @@
+
+<div class="ven_modal">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana');">x</a></div>
+ <form method="post" id="form1"  action="" name="form1">
+  
+             
+                    
+                    <h3>¿Que quiere hacer?:</h3>
+                    <hr>
+                    <table>
+                    <input type="hidden" id="url" name="url" value="0">        
+                        <tr>
+                            <td><input type="button" value="Usar imágen como slider" id="usar"name="usar" onclick= "document.form1.action = 'query/usar_imagen_slide.php'; document.form1.submit()" /></td>
+                        </tr>
+                         <tr>
+                             <td><input type="button" value="Eliminar imágen" id="delete"name="delete" onclick= "document.form1.action = 'query/eliminar_imagen.php'; document.form1.submit()" />
+                         </td> </tr>
+ </table>      
+      </form>
+      </div>

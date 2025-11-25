@@ -1,0 +1,50 @@
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+body {font-family:Segoe UI,Arial,sans-serif;}
+
+.ventana{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+  
+}
+.ven_login{
+  height: auto;
+  width: auto;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  top:50%;
+  left:50%;
+  position: absolute;
+  margin-left: -175px;
+  margin-top: -175px;
+}
+.ventana td, .ventana .not-found{border: 0px solid #000;}
+.login{width:450px;height:300px;margin:10%;font-family:Segoe UI,Arial,sans-serif;font-size:1.2em;color:#fff;border-size:2px;border-style:solid;border-color:#fff;}
+.login input[type=text], .login .not-found {width:20em;height:40px;}
+.login input[type=password], .login .not-found {width:20em;height:40px;}
+
+  .boton_purple{ 
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color:#566573;
+  }
+
+.cerrar {text-align: right;margin-bottom: -20px;}
+.cerrar a{
+  color: red;
+  font-weight: 700;
+  font-size: 1.5em;
+  text-decoration:none;
+}
+
+  
+ 

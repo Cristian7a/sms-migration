@@ -1,0 +1,35 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_15');">x</a></div>
+
+ <form method="post" id="form_pro"  action="query/alta_pro.php" name="form_pro">
+  
+             
+                    <br>
+                    <br>
+                    <h3>Nueva Propuesta de Medida de Mitigación:</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td width="30px">Descripción:</td>
+                            <td witdh="auto">
+                              <textarea id="desc" name="desc" cols="30%" ></textarea>
+                              
+                           </td>
+                           
+                        </tr>
+                      
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEREP_PRO" name="IDEREP_PRO" value="0" />
+                              <input type="hidden" id="IDERIE_PRO" name="IDERIE_PRO" value="0" /></td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_pro" id="enviar_pro">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id2 = getParameterByName('IDEREP_PRO');
+ nuevo_id("IDEREP_PRO",id2);
+</script>

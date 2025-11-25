@@ -1,0 +1,23 @@
+ <div class="ven_modal" id="_3">
+ <div class="cerrar"><a href="javascript:cerrarventana('.ventana_1');">x</a></div>
+ <br>     
+<h2> Documentos</h2>
+<hr>
+<div style=';height:100px;overflow-y: scroll;'>
+<table id="documentos" >
+
+</table>
+</div>
+<hr>
+<h2> Subir nuevo documento</h2>
+ <form method="post" id="form_doc"  action="query/alta_doc.php" name="form_doc" enctype="multipart/form-data">
+   <table>
+    <tr><td>Nombre del documento</td><td><input type="text" id="nom" name="nom" /></td></tr>
+    <tr><td>Subir archivo</td><td><input type="file" id="doc" name="doc" /></td></tr>
+    <tr><td></td><td><input type="hidden" id="docmon" name="docmon" value="" /></td></tr>
+   </table>
+   <p><b>Nota: </b>   </p>
+   <input type="submit" class="boton"  value="Subir" name="enviar_doc" id="enviar_doc">
+</form>
+
+ </div>

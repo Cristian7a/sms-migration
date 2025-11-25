@@ -1,0 +1,41 @@
+<div class="ven_modal" id="_5">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_8');">x</a></div>
+
+ <form method="post" id="form_inv"  action="" name="form_inv">
+  
+                    <br>
+                    <br>
+                    <h3>Nueva Coordinación Involucrada:</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td>Areá:</td>
+                            <td><select id="area1" name="area1">
+                           
+                      </select>
+</td>
+                        </tr>
+                        <tr>
+                            <td>Empleado:</td>
+                             <td><select id="emp1" name="emp1">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                       
+                        </select></td>
+                        </tr>
+                         <tr>
+                            <td>
+                               <input type="hidden" id="IDEREP" name="IDEREP" value="0" />
+                             <input type="hidden" id="IDEPRO_INV" name="IDEPRO_INV" />
+                              </td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar_inv" id="enviar_inv">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+   
+ <script type="text/javascript">
+ var id2 = getParameterByName('IDEREP');
+ nuevo_id("IDEREP",id2);
+</script>

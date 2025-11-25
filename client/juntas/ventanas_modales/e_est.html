@@ -1,0 +1,39 @@
+
+<div class="ven_modal" id="_5">
+  <div class="cerrar"><a href="javascript:cerrarventana('.ventana_3');">x</a></div>
+      <form method="post" id="form_est"  action="query/mod_est.php" name="form_est">
+      <br>
+                    <h3>Editar estatus</h3>
+                   <hr>
+                    <table class="tabla_ven">
+                       <tr>
+                            <td>Estatus:</td>
+                            <td><select id="est3" name="est3">
+                              <option value="ABIERTO">ABIERTO</option>
+                              <option value="CERRADO">CERRADO</option>
+                              <option value="EN PROCESO">EN PROCESO</option>
+                              <option value="NUEVO TIEMPO ASIGNADO">NUEVO TIEMPO ASIGNADO</option>
+                            </select></td>
+                       </tr>  
+                        <tr>
+                            <td><input type="hidden" id="IDEPRO3" name="IDEPRO3" value="0" />
+                              <input type="hidden" id="IDEJUN3" name="IDEJUN3" value="0" /></td>
+                      <td>
+                    <div class="buttons">
+            <input type="submit" class="boton"  value="Editar" name="enviar_est" id="enviar_est">
+          </div> </td></tr>
+        </table>
+       
+     
+
+    
+
+          
+
+
+      </form>
+  </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEJUN');
+ nuevo_id("IDEJUN3",id);
+</script>

@@ -1,0 +1,32 @@
+ <div class="ven_modal" id="_1">
+ <div class="cerrar"><a href="javascript:cerrarventana('.ventana_3');">x</a></div>
+      
+<h2> Documentos</h2>
+<hr>
+<div style=';height:100px;overflow-y: scroll;'>
+<table id="documentos" >
+
+</table>
+</div>
+<hr>
+<h2> Subir nuevo documento</h2>
+ <form method="post" id="form_doc"  action="query/alta_doc.php" name="form_doc" enctype="multipart/form-data">
+   <table>
+    <tr><td><select id="est" name="est">
+                            <option selected="selected" value="" id="med_mon" name="med_mon">--ELEGIR--</option>
+                             <option value="REVISIÓN FISICA">REVISIÓN FISICA</option>
+                             <option value="ENTREVISTA">ENTREVISTA</option>
+                             <option value="OBSERVACIÓN">OBSERVACIÓN</option>
+                             <option value="DATOS OPERACIONALES">DATOS OPERACIONALES</option>
+                             <option value="ENCUESTAS">ENCUESTAS</option>
+                             <option value="EVALUACIONES">EVALUACIONES</option>
+                          </select></td></tr>
+    <tr><td>Nombre del documento</td><td><input type="text" id="nom" name="nom" /></td></tr>
+    <tr><td>Subir archivo</td><td><input type="file" id="doc" name="doc" /></td></tr>
+    <tr><td></td><td><input type="hidden" id="docmon" name="docmon" value="" /></td></tr>
+   </table>
+   <p><b>Nota: </b> Favor de subir las imagenes dentro de un archivo pdf  </p>
+   <input type="submit" class="boton"  value="Subir" name="enviar_doc" id="enviar_doc">
+</form>
+
+ </div>

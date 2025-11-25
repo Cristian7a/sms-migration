@@ -1,0 +1,37 @@
+<head>
+     <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Gestión</title>
+        <link rel="shortcut icon" href="../imagenes/icon.ico" /> 
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+  <link rel='stylesheet' id='plantilla1'  href='css/plantilla.css' type='text/css' media='all' />
+<link rel='stylesheet' id='plantilla2'  href='../icomoon/style.css' type='text/css' media='all' />
+
+<script type="text/javascript">
+$(document).ready(main);
+ 
+var contador = 1;
+ 
+function main(){
+	$('.menu_bar').click(function(){
+		// $('nav').toggle(); 
+ 
+		if(contador == 1){
+			$('nav').animate({
+				left: '0'
+			});
+			contador = 0;
+		} else {
+			contador = 1;
+			$('nav').animate({
+				left: '-100%'
+			});
+		}
+ 
+	});
+ 
+};
+</script>

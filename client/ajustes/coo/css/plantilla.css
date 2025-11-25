@@ -1,0 +1,187 @@
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}  
+* {margin:0;padding:0;}
+body {font-family:sans-serif;}
+
+.reporte {width:100%;font-family:Segoe UI,Arial,sans-serif;}
+.reporte a, .reporte .not-found {color:#000;font-size:1em;line-height:1.3;display:inline-block;}
+input[type=text], .reporte.not-found {width:90%;height:100%;}
+select, .reporte.not-found {width:90%;height:100%;}
+.boton{ 
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color:#AC193D;}
+
+.back {width:3.8em;height:4em;float:left;background-size:cover;padding:1em;}
+.backtitulo {width:auto;height:4em;float:left;padding-top:1.3em;}
+.backtitulo h3, .backtitulo .not-found {color:#FFF;font-size:1.4em;}
+.menuitem {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menudrop {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menu_bar {display:none;}
+header{width: 100%;}
+header nav {width:100%;width:100%;height:4.1em;background-color:#AC193D;}
+nav a {color:#FFF;font-size:1.1em;line-height:1.3;text-decoration:none;}
+header nav ul { overflow:hidden;list-style:none;}
+header nav ul li {float:right;}  
+
+
+.ventana, .ventana_2, .ventana_3, .ventana_4, .ventana_5, .ventana_6, .ventana_7{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.ven_modal{
+  height: auto;
+  width: auto;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  margin-left: -175px;
+  margin-top: -175px;
+}
+#_1{top:37%;left:40%;}
+#_2{top:37%;left:40%;}
+#_3{top:45%;left:50%;}
+#_4{top:30%;left:43%;}
+
+.ventana td, .ventana .not-found{border-bottom: 0px solid #000;}
+.ventana_2 td, .ventana_2 .not-found{border-bottom: 0px solid #000;}
+.ventana_3 td, .ventana_3 .not-found{border-bottom: 0px solid #000;}
+.cerrar {text-align: right;margin-bottom: -20px;}
+.cerrar a{
+  color: red;
+  font-weight: 700;
+  font-size: 1.5em;
+  text-decoration:none;
+}
+
+.tabla {margin-top:.1em;}
+.indicador thead {background:#F9BF8F;color: #000;}
+.reportes thead {background:#16365C;color: #fff;}
+
+table {
+   width: 100%;
+   font-size: .85em;
+
+   
+}
+th{
+  border-bottom: 1px solid #000;  
+}
+
+.tabla td{
+   border-bottom: 1px solid #979a9a;
+   border-collapse: separate;
+   border-spacing: 50px;
+   background:#fff;
+}
+
+
+.f2 {width:100%;font-family:Segoe UI,Arial,sans-serif;font-size:.8em;float:left;}
+.f2 h1,h2{color:#AC193D;}
+.fila {width:100%;margin:.1em; float:left;}
+.columna {width:70%;margin:.1em; margin-left:5em; float:left;}
+.campo {width:100%;margin:.2em; float:left;}
+.campo p, .campo .not-found {color:#000;font-size:1.2em;line-height:.1;display:inline-block;}
+
+
+@media screen and (max-width:800px ) {
+  header nav {
+    width:80%;
+    height:100%;
+    left:-100%;
+    position: fixed;
+  }
+  header nav ul li {
+    display:block;
+    float:none;
+    border-bottom:1px solid rgba(255,255,255, .3);
+  }
+  .menu_bar {
+    display:block;
+    width:100%;
+    background:#AC193D;
+  }
+  .menu_bar .bt_menu {
+    display:block;
+    padding:20px;
+    color:#fff;
+    text-decoration:none;
+    font-weight: bold;
+    font-size:25px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  .menu_bar span {
+    float:right; font-size:40px;  
+  }
+
+.ven_modal{
+  height: auto;
+  width: 100%;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;}
+  #_1{top:34%;left:49%;}
+  #_2{top:34%;left:49%;}
+  #_3{top:40%;left:49%;}
+  #_4{top:40%;left:49%;}
+
+}
+
+ .image_wrapper {
+            position:relative;
+            width:120px;
+            float:left;
+            margin:8px;}
+
+.image_wrapper .image {
+            border:1px solid #ccc;
+            width:120px;
+            height:120px;}
+
+/* Definimos el formato de las imagenes */
+
+.image_wrapper .add, .image_wrapper .remove {
+            position:absolute;
+            top:0px;
+            opacity: 0.5;
+            transition:opacity 0.5s linear;
+            -webkit-transition:opacity 0.5s linear;
+            cursor:pointer;
+            border:0px;
+            width:25px;
+            height:25px;
+        }
+
+/* Mostramos el icono al pasar por encima de la imagen con una transicion */
+
+        .image_wrapper:hover .add, .image_wrapper:hover .remove {
+            transition: opacity 0.5s linear;
+            -webkit-transition: opacity 0.5s linear;
+            opacity: 0.8;}
+ /* Posicionamos los botones en la posicion izquierda y derecha */
+      .image_wrapper .add {
+            left:0px;}
+
+      .image_wrapper .remove {
+            right:0px;
+        }
+
+        #clicked {clear:both;}
+
+
+

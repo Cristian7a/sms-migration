@@ -1,0 +1,38 @@
+<div class="ven_modal" id="_1">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana');">x</a></div>
+
+ <form method="post" id="form_est"  action="query/edit_est.php" name="form_est">
+  
+             
+                    <br>
+                    <h3>Aquellas medidas de mitigación o procedimientos que ...</h3>
+                    <hr>
+                    <table>
+                         <tr>
+                            <td>Estatus:</td>
+                             <td> <select id="est" name="est">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="NO HAN SIDO IMPLEMENTADAS">NO HAN SIDO IMPLEMENTADAS</option>
+                             <option value="YA NO SON FUNCIONALES Y DEBEN DESECHARSE">YA NO SON FUNCIONALES Y DEBEN DESECHARSE</option>
+                             <option value="FUNCIONAN PARCIALMENTE">FUNCIONAN PARCIALMENTE</option>
+                              <option value="FUNCIONAN CORRECTAMENTE">FUNCIONAN CORRECTAMENTE</option>
+                          </select></td>
+                        </tr>
+                        <tr>
+                            <td>Porcentaje de funcionamiento:</td>
+                            <td id="porc" name="porc"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descripción del estatus:</td>
+                            <td id="desc" name="desc"> </td>
+                        </tr>
+                         <tr>
+                            <td><input type="hidden" id="monpro" name="monpro"/></td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar cambios" name="enviar_est" id="enviar_est">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>

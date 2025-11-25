@@ -1,0 +1,126 @@
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+body {font-family:sans-serif;}
+ 
+.item a, .item .not-found {color:#FFF;font-size:2em;line-height:1.3;text-decoration:none;display:inline-block;width:100%;height:100%;}
+ 
+.reporte {width:93%;margin:1em;font-family:Segoe UI,Arial,sans-serif;font-size:1.2em;}
+.ventana{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+.ventana_2{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  background-image:url(../../../imagenes/bg.png);
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.ven_modal{
+  height: auto;
+  width: auto;
+  padding: 25px;
+  background-color: #fff;
+  color: #000;
+  top:35%;
+  left:40%;
+  position: absolute;
+  margin-left: -175px;
+  margin-top: -175px;
+}
+.ventana td, .ventana .not-found{border-bottom: 0px solid #000;}
+.ventana_2 td, .ventana_2 .not-found{border-bottom: 0px solid #000;}
+.ventana_3 td, .ventana_3 .not-found{border-bottom: 0px solid #000;}
+.cerrar{
+  color: red;
+  font-weight: 500;
+  text-align: right;
+  height: 5px;
+}
+.formulario {width:100%;font-family:Segoe UI,Arial,sans-serif;font-size:.9em;float:left;background-color:#efe8ff
+}
+.fila {width:100%;margin:.1em; float:left;}
+.columna {width:50%;margin:.1em; margin-left:10%; float:left;}
+.campo {width:100%;margin:.2em; float:left;}
+.nombre {width:23%;margin:.2em; float:left;}
+.nombre_2 {width:28%;margin:.2em; float:left;margin-left:1px; }
+
+.reporte a, .reporte .not-found {color:#000;font-size:1em;line-height:1.3;display:inline-block;}
+.reporte input[type=text], .reporte.not-found {width:95%;height:100%;}
+.formulario a, .formulario .not-found {color:#000;font-size:1.2em;line-height:1.3;text-decoration:none;display:inline-block;}
+.formulario input[type=text], .formulario .not-found {width:50%;height:30px;}
+.formulario input[type=date], .formulario .not-found {width:50%;height:30px;}
+.formulario select, .formulario .not-found {width:50%;height:30px;}
+.boton{ 
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color:#AC193D;
+  }
+
+.menu{width:100%;height:4.1em;background-color:#AC193D;}
+
+.back {width:3.8em;height:4em;float:left;background-size:cover;padding:1em;}
+.backtitulo {width:auto;height:4em;float:left;}
+.backtitulo h3, .backtitulo .not-found {color:#FFF;font-size:1.4em;}
+.menuitem {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+.menudrop {width:auto;height:4em;float:right;background-size:cover;padding:1em;}
+      ul, ol, li {
+        list-style:none;
+      }
+      .nav > li {
+        float:left;
+      }
+       .nav li:hover > ul {
+        display:block;
+      }
+      .nav li a {
+        color:#fff;
+        text-decoration:none;
+        padding-bottom:10px;
+        padding-right: 20px;
+        padding-top:-30px;
+        display:block;
+      }
+   
+      .nav li ul {
+        display:none;
+        position:absolute;
+        background-color:#AC193D;
+      }
+      
+ 
+.menu a, .menu .not-found {color:#FFF;font-size:1.1em;line-height:1.3;text-decoration:none;display:inline-block;width:100%;height:100%;}
+
+.tabla {margin-top:1em;}
+.indicador thead {background:#AC193D;color: #000;}
+.reportes thead {background:#AC193D;color: #fff;}
+
+table {
+   width: 100%;
+   
+}
+th{
+  border-bottom: 1px solid #000;  
+}
+
+.tabla td{
+  border-bottom: 1px solid #8C0095;
+   border-collapse: separate;
+   border-spacing: 50px;
+   background:#fff;
+}
+
+
+

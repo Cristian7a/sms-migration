@@ -1,0 +1,34 @@
+
+ <div class="ven_modal" id="_1">
+ <div class="cerrar"><a href="javascript:cerrarventana('.ventana_11');">x</a></div>
+<br>        
+<h2>Elegir monitoreo</h2>
+<hr>
+ <form method="post" id="form_ini"  action="query/alta_ini.php" name="form_ini" enctype="multipart/form-data">
+   <table>
+    <tr><td>
+      Medio de monitoreo:
+    </td><td><select id="med_mon_i" name="med_mon_i">
+                            <option selected="selected" value="">--ELEGIR--</option>
+                             <option value="REVISIÓN FISICA">REVISIÓN FISICA</option>
+                             <option value="ENTREVISTA">ENTREVISTA</option>
+                             <option value="OBSERVACIÓN">OBSERVACIÓN</option>
+                             <option value="DATOS OPERACIONALES">DATOS OPERACIONALES</option>
+                             <option value="ENCUESTAS">ENCUESTAS</option>
+                             <option value="EVALUACIONES">EVALUACIONES</option>
+                          </select></td></tr>
+    <tr><td>Nombre del documento</td><td><input type="text" id="nom_i" name="nom_i" /></td></tr>
+    <tr><td>Subir archivo</td><td><input type="file" id="doc_i" name="doc_i" /></td></tr>
+    <tr><td></td><td><input type="hidden" id="mondoc_i" name="mondoc_i" value="" /></td></tr>
+   </table>
+<p><b>Nota: </b> Favor de subir las imagenes dentro de un archivo pdf  </p>
+<br>
+
+
+   
+   <input type="submit" class="boton"  value="Aceptar" name="enviar_ini" id="enviar_ini">
+</form>
+
+ </div>
+
+ 

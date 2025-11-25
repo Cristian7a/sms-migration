@@ -1,0 +1,35 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_21');">x</a></div>
+
+ <form method="post" id="form_lis"  action="../pdf/lista.php" name="form_min">
+  
+                    <br>
+                    <br>
+                    <h3>Generar lista de asistencias:</h3>
+                    <hr>
+                    <table>
+              
+                        <tr>
+                            <td>Fecha:</td>
+                            <td><input type="date" id="fec_lis" name="fec_lis"></td>
+                        </tr>
+                        <tr>
+                            <td>Hora de inicio:</td>
+                             <td><input type="time" id="ini_lis" name="ini_lis"></td>
+                        </tr>
+                        
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEREP_lis" name="IDEREP_lis" value="0" /></td>
+
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Generar" name="enviar_lis" id="enviar_lis">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEREP');
+ nuevo_id("IDEREP_lis",id);
+</script>

@@ -1,0 +1,33 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_5');">x</a></div>
+
+ <form method="post" id="formregistro"  action="query/mod_pro.php" name="formregistro">
+  
+
+                    <br>
+                    <h3>Editar propuesta final</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td width="20%">Descripción:</td>
+                            <td  >
+                              <textarea id="propuesta5" name="propuesta5" cols="30%" ></textarea>
+                           </td>
+                        </tr>
+                      
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEPRO5" name="IDEPRO5" value="0" />
+                              <input type="hidden" id="IDEJUN5" name="IDEJUN5" value="0" />
+                              </td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar" id="enviar">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEJUN');
+ nuevo_id("IDEJUN5",id);
+</script>

@@ -1,0 +1,33 @@
+<div class="ven_modal" id="_2">
+    <div class="cerrar"><a href="javascript:cerrarventana('.ventana_18');">x</a></div>
+
+ <form method="post" id="formregistro"  action="query/cerrar_propuesta.php" name="formregistro">
+  
+
+                    <br>
+                    <h3>Editar propuesta final de Medida de Mitigación:</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td width="20%">Descripción:</td>
+                            <td  >
+                              <textarea id="des_final" name="des_final" cols="30%" ></textarea>
+                           </td>
+                        </tr>
+                      
+                         <tr>
+                            <td>
+                              <input type="hidden" id="IDEPRO_FINAL" name="IDEPRO_FINAL" value="0" />
+                              <input type="hidden" id="IDEREP_FINAL" name="IDEREP_FINAL" value="0" />
+                              </td>
+                             <td><div class="buttons">
+            <input type="submit" class="boton"  value="Guardar" name="enviar" id="enviar">
+        </div>
+    </td> </tr>
+ </table>      
+      </form>
+      </div>
+ <script type="text/javascript">
+ var id2 = getParameterByName('IDEREP');
+ nuevo_id("IDEREP_FINAL",id2);
+</script>

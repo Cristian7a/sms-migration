@@ -1,0 +1,48 @@
+
+<div class="ven_modal" id="_3">
+  <div class="cerrar"><a href="javascript:cerrarventana('.ventana_2');">x</a></div>
+      <form method="post" id="form_pro"  action="query/alta_pro.php" name="form_pro">
+      <br>
+                    <h3>Nueva propuesta de mejora</h3>
+                   <hr>
+                    <table class="tabla_ven">
+                        <tr>
+                            <td width="180px">Propuesta:</td>
+                            <td width="300px"><input type="text" id="des" name="des" /></td>
+                        </tr>
+                        <tr>
+                            <td >Tiempo de atención (horas):</td>
+                            <td><input type="number" id="tie" name="tie" min="0" /></td>
+                        </tr>
+                       <tr>
+                            <td>Areá:</td>
+                            <td><select id="area" name="area"></select></td>
+                       </tr>
+                       <tr>
+                            <td>Responsable:</td>
+                             <td><select id="emp" name="emp">
+                            <option selected="selected" value="">--ELEGIR--</option></select></td>
+                        </tr>
+                        <tr>
+                            <td><input type="hidden" id="IDETEM2" name="IDETEM2" value="0" /></td>
+                      <td>
+                    <div class="buttons">
+            <input type="submit" class="boton"  value="Agregar" name="enviar_pro" id="enviar_pro">
+          </div> </td></tr>
+        </table>
+       
+     
+
+    
+
+          
+
+
+      </form>
+  </div>
+
+ </div>
+ <script type="text/javascript">
+ var id = getParameterByName('IDEJUN');
+ nuevo_id("IDEJUN",id);
+</script>
