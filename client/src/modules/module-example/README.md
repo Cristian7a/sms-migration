@@ -1,1 +1,0 @@
-Este archivo es un ejemplo de cómo se debe estructurar un módulo. Eliminarlo cuando ya haya creado el resto de módulos.
