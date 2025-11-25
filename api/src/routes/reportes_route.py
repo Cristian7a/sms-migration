@@ -26,3 +26,10 @@ def store():
         return jsonify(resultado.model_dump()), 201
     except ValidationError as e:
         return jsonify(e.errors()), 400
+    
+@reportes_bp.route('/<int:id>', methods=['GET'])
+def show(id):
+    reporte = servicio.obtener_por_id(id) # Tu servicio ya tiene este método 'obtener_por_id'
+    if not reporte:
+        return jsonify({'error': 'Reporte no encontrado'}), 404
+    return jsonify(reporte.model_dump())
