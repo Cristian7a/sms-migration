@@ -44,7 +44,7 @@ include("app/modules/head/head_index.html"); ?>
 								<?php 
 								if (isset($_SESSION["user"])){ ?>
                                 <li><a class="page-scroll" href="app/app.php">S.M.S</a></li>
-                                <li><a class="page-scroll" href="conex/logout.php">Cerrar sesión</a></li>
+                                <li><a class="page-scroll" href="../conex/logout.php">Cerrar sesión</a></li>
 								<?php }else{ ?>
 								<li><a class="page-scroll" href="javascript:openventana('.ventana');">Iniciar sesión</a></li>
 								<?php } ?>
@@ -63,7 +63,7 @@ include("app/modules/head/head_index.html"); ?>
 <?php 
 include("app/modules/body/contenido_index.html"); 
 if(isset($_GET['USU'])){echo '<script> alert("Usuario o contraseña incorrectos.");</script>';}
-require_once("conex/acceso.php"); 
+require_once("../conex/acceso.php"); 
 ?>
 
 </html>

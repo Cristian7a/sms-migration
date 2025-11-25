@@ -38,7 +38,7 @@ $Result1=mysqli_query($conex, $insertSQL) or die (mysqli_error($conex));
 
 			if ($_SESSION["nivel"]<=4){
 			
-		  	header("Location: ../" );
+		  	header("Location: ../src/index.php" );
 		 require_once("../ajustes/visual/conex/conex.php");
 		 mysqli_select_db($conex, $database_conex);
 		$log2 = mysqli_query($conex,"SELECT tip_asp,img_asp FROM asp WHERE ide_usu=$user") or die(mysqli_error($conex));
@@ -55,7 +55,7 @@ $Result1=mysqli_query($conex, $insertSQL) or die (mysqli_error($conex));
 		} 
 		else{
 
-			header("Location: ../index.php?USU=X" );
+			header("Location: ../src/index.php?USU=X" );
 			
 			
 		}

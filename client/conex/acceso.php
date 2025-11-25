@@ -5,8 +5,8 @@ if (!isset($_COOKIE["acceso"])) {
     setcookie("acceso","hoy",time()+450);
 }
 
-$acceso = $_COOKIE['acceso'] ?? null;
-$user   = $_SESSION['user'] ?? null;
+$acceso = isset($_COOKIE['acceso']) ? $_COOKIE['acceso'] : null;
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
  $ip=$_SERVER['HTTP_CLIENT_IP'];}
@@ -132,7 +132,8 @@ $fecha=date("Y-m-d h:i");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (is_null($_COOKIE["acceso"]) && is_null($_SESSION["user"])){
+// Corrección 2: Usar !isset() para verificar la ausencia de cookies/sesión
+if (!isset($_COOKIE["acceso"]) && !isset($_SESSION["user"])){
     $insertSQL = sprintf("INSERT INTO ACCESOS (DIRACC,FECACC,BROACC) VALUES ( '$ip', '$fecha', 
     '$yourbrowser')");
 $Result1=mysqli_query($conex, $insertSQL) or die (mysqli_error($conex));

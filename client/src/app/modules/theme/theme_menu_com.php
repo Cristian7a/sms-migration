@@ -26,8 +26,8 @@ mysqli_select_db($conex, $database_conex);
 <body  BACKGROUND="<?php echo "ajustes/visual/".$fondo; ?>">
 
 <div class="container js-isotope" data-isotope-options="{ "itemSelector": ".item", "layoutMod": "fitRows" }">
-	<div class="item item-blue"><a class="post-title" href="index.php"><IMG height="100px" SRC="imagenes/icono_inicio.png"><br>Pagina principal</a></div>
-<div class="item item-blue" ><a class="post-title" href="reportes_i"><IMG height="100px" SRC="imagenes/menu_rep.png">Reportes</a></div>
+	<div class="item item-blue"><a class="post-title" href="index.php"><IMG height="100px" SRC="../../../public/assets/images/icono_inicio.png"><br>Pagina principal</a></div>
+<div class="item item-blue" ><a class="post-title" href="reportes_i"><IMG height="100px" SRC="../../../public/assets/images/menu_rep.png">Reportes</a></div>
 <?php
 $ide=$_SESSION['user'];
 $query_i = "SELECT IDEINV FROM INV WHERE PERINV=$ide ";
@@ -35,7 +35,7 @@ $i = mysqli_query($conex, $query_i) or die(mysqli_error());
 $totalRows_i = mysqli_num_rows($i);
 if ($totalRows_i > 0) { 
 	?>
-<div class="item item-teal"><a class="post-title" href="inv"><IMG height="100px" SRC="imagenes/involucrado.png"><br>Involucrado en reunión</a></div>
+<div class="item item-teal"><a class="post-title" href="inv"><IMG height="100px" SRC="../../../public/assets/images/involucrado.png"><br>Involucrado en reunión</a></div>
 <?php } 
 $query_r = "SELECT IDERES,FECLIM FROM RES WHERE EMPRES=$ide order by FECLIM DESC LIMIT 1";
 $r = mysqli_query($conex, $query_r) or die(mysqli_error());
@@ -46,13 +46,13 @@ if ($totalRows_r > 0) {
 	$feclim=date("d-m-Y",strtotime($feclim));
     $hoy=date('d-m-Y');
     if($hoy>=$feclim){ ?>
-    	<div class="item item-red_alert"><a class="post-title" href="res"><IMG height="100px" SRC="imagenes/responsable.png"><br>Responsable</a></div>
+    	<div class="item item-red_alert"><a class="post-title" href="res"><IMG height="100px" SRC="../../public/assets/images/responsable.png"><br>Responsable</a></div>
    <?php }else{ ?>
 		<div class="item item-teal"><a class="post-title" href="res"><IMG height="100px" SRC="imagenes/responsable.png"><br>Responsable</a></div>
 <?php } }?>
-<div class="item item-green2"><a class="post-title" href="juntas/participante.php"><IMG height="100px" SRC="imagenes/menu_inv.png"><br>Juntas de Control</a></div>
+<div class="item item-green2"><a class="post-title" href="juntas/participante.php"><IMG height="100px" SRC="../../public/assets/images/menu_inv.png"><br>Juntas de Control</a></div>
 
-<div class="item item-gray"><a class="post-title" href="ajustes"><IMG height="90%" SRC="imagenes/conf.png">Ajustes</a></div>
+<div class="item item-gray"><a class="post-title" href="ajustes"><IMG height="90%" SRC="../../public/assets/images/conf.png">Ajustes</a></div>
 <!--
 <div class="item item-green" ><a class="post-title" href="reportes_i"><IMG height="100px" SRC="imagenes/menu_rep.png">Exámenes</a></div>
 -->

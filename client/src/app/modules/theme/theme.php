@@ -1,15 +1,15 @@
 <?php 
-require_once("conex/conex.php"); 
+require_once(dirname(dirname(__DIR__)) . '/res/conex/conex.php');
 mysqli_select_db($conex, $database_conex);?>
 <html>
-<link rel='stylesheet' id='plantilla'  href='css/plantilla.css' type='text/css' media='all' />
+<link rel='stylesheet' id='plantilla'  href="/trabajos/sms-migration/client/src/app/styles/templates/plantilla.css" type='text/css' media='all' />
 <div class="barra_login">
 <?php if ($_SESSION["foto"]==""){ ?>
 <div class="loginimage"><a href="fotos"><IMG height="35px" SRC="imagenes/usuario.png"></a></div> <?php }else { ?>
 <div class="loginimage"><a href="fotos"><IMG height="60px" SRC="fotos/<?php echo ($_SESSION["foto"]);?>"></a></div> 
 <?php }?>
 <div class="loginitem" align="right"><a href="ajustes/cuenta"><?php echo utf8_encode($_SESSION["nombre"]); ?></a>
-<br><a href="conex/logout.php" >Cerrar sesión</a></div>
+<br><a href="../../conex/logout.php" >Cerrar sesión</a></div>
 <?php if(isset($_SESSION["user1"])){ ?>
 
 <form id="sesion" name="sesion" action="conex/cambiar_sesion.php">
@@ -22,8 +22,9 @@ mysqli_select_db($conex, $database_conex);?>
 
 
         </div>
-<?php $fondo=$_SESSION['fondo'];  ?>        
+<?php $fondo = isset($_SESSION['fondo']) ? $_SESSION['fondo'] : ''; ?>        
 <body  BACKGROUND="<?php echo "ajustes/visual/".$fondo; ?>">
+
 
 <div class="container js-isotope" data-isotope-options="{ "itemSelector": ".item", "layoutMod": "fitRows" }">
 <div class="item item-blue"><a class="post-title" href="index.php"><IMG height="100px" SRC="imagenes/icono_inicio.png"><br>Pagina principal</a></div>
