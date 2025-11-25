@@ -1,13 +1,23 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from typing import Optional
 
+# DTO para recibir credenciales de Login
+class LoginDTO(BaseModel):
+    email: str
+    password: str
+
+# DTO unificado ombina Reportes y Auth
 class UsuarioDTO(BaseModel):
     id: int
-    nombre_completo: str  # Mapeado de NOMEMP + APPEMP + APMEMP
-    email: EmailStr       # Mapeado de EMAEMP
-    cargo: str            # Mapeado de NOMCAR
-    rol_sistema: str      # Mapeado de NOMPRI
-    es_activo: bool
+    nombre_completo: str
+    email: str
+    cargo: str
+    # Usamos 'rol_sistema' para mantener compatibilidad con ReporteService
+    rol_sistema: str 
+    es_activo: bool = True
+    
+    # Campo opcional para el token (solo se llena al hacer login)
+    token: Optional[str] = None 
 
     class Config:
-        from_attributes = True # Permite convertir desde objetos ORM/SQL fácilmente
+        from_attributes = True

@@ -1,94 +1,73 @@
 from src.extensions import db
-from datetime import datetime, time
+from datetime import datetime, date, time
+from typing import Optional
 
 class Reporte(db.Model):
-    # 1. Vinculación con la tabla real del .sql
+    # 1. Vinculación con la tabla real
     __tablename__ = 'rep' 
 
-    # 2. Mapeo exacto de columnas (Nombre Python = db.Column('NOMBRE_SQL', ...))
+    # 2. Mapeo 
     
-    # Identificadores
+    # IDEREP es la PK
     id = db.Column('IDEREP', db.Integer, primary_key=True)
-    folio = db.Column('CONREP', db.String(10), nullable=False, default='')
-    consecutivo = db.Column('CONSEC', db.Integer, nullable=False, default=0)
-    referencia = db.Column('REFREP', db.String(25), nullable=False, default='')
-
-    # Fechas (La BD las guarda separadas, aquí las mapeamos tal cual)
-    anio = db.Column('ANOREP', db.Integer, nullable=False)
-    mes = db.Column('MESREP', db.Integer, nullable=False)
-    dia = db.Column('DIAREP', db.Integer, nullable=False)
-    hora = db.Column('HORREP', db.Time, nullable=False)
-
-    # Contenido del Reporte
-    titulo = db.Column('TITREP', db.Text, nullable=False)
-    descripcion = db.Column('DESREP', db.Text, nullable=False)
-    observaciones = db.Column('OBSREP', db.Text, nullable=False, default='')
-    acciones = db.Column('ACCREP', db.Text, nullable=False, default='')
-    comentario = db.Column('COMREP', db.Text, nullable=False, default='')
-    obra = db.Column('OBRREP', db.Text, nullable=False, default='')
-
-    # Relaciones / Llaves Foráneas (Foreign Keys)
-    # Nota: En el SQL original son enteros.
-    lugar_id = db.Column('LUGREP', db.Integer, nullable=False) # FK a tabla 'lug'
-    usuario_id = db.Column('SOLREP', db.Integer, nullable=True) # FK a tabla 'per' (usuarios)
-    estatus_id = db.Column('ESTREP', db.Integer, nullable=False, default=1) # FK a tabla 'est'
     
-    # Otros campos detectados en el SQL
-    tipo = db.Column('TIPREP', db.String(12), nullable=False, default='General')
-    notificacion = db.Column('NOTREP', db.Integer, nullable=False, default=0)
-    equipo_id = db.Column('EQUIPO', db.Integer, nullable=True)
-    herramienta_id = db.Column('HERRAMIENTA', db.Integer, nullable=True)
-    localizacion = db.Column('LOCREP', db.String(50), nullable=True)
-    turno = db.Column('TURREP', db.String(15), nullable=True)
-    area = db.Column('AREAREP', db.String(25), nullable=True)
-    puesto = db.Column('PUESTOREP', db.String(25), nullable=True)
+    # CONREP (Confidencialidad) - tinyint(1) en SQL, mapeado a entero
+    # Lo usamos para almacenar un valor por defecto (0)
+    folio = db.Column('CONREP', db.SmallInteger, nullable=False, default=0) 
+    
+    # Fechas
+    fecha_evento_db = db.Column('FECEVE', db.Date, nullable=False)        # Fecha del Suceso
+    fecha_creacion_db = db.Column('FECREP', db.DateTime, nullable=False)  # Fecha del Reporte/Creación
+    
+    # Contenido (Mapeando el DTO a los campos disponibles)
+    frecuencia = db.Column('FREREP', db.String(25), nullable=False, default='S/D') 
+    # Usamos OBSREP para guardar el Título y la Descripción
+    observaciones = db.Column('OBSREP', db.String(300), nullable=True, default='') 
+    
+    # Llaves Foráneas (Foreign Keys)
+    lugar_id = db.Column('LUGREP', db.Integer, nullable=False) # FK a tabla 'lug'
+    usuario_id = db.Column('PERREP', db.Integer, nullable=False) # FK a tabla 'per' (usuarios)
+    
+    # CANREP - Mapeado a entero con default
+    campo_can = db.Column('CANREP', db.SmallInteger, nullable=False, default=0) 
+    # Relación One-to-Many: Un reporte tiene muchas evidencias.
+    evidencias = db.relationship('Evidencia', backref='reporte', lazy=True) 
 
-    # 3. Constructor: Abstrae la complejidad de la fecha
-    def __init__(self, titulo, descripcion, usuario_id, lugar_id=1, estatus_id=1):
-        self.titulo = titulo
-        self.descripcion = descripcion
+    # 3. Constructor Abstrae el DTO y lo mapea a los campos limitados de la BD
+    def __init__(self, titulo: str, descripcion: str, usuario_id: int, lugar_id: int):
+        # Mapeo de datos del DTO (ReporteCreateDTO)
         self.usuario_id = usuario_id
         self.lugar_id = lugar_id
-        self.estatus_id = estatus_id
+        # La fecha de evento viene del DTO
+        self.fecha_evento_db = date.today() 
         
-        # Lógica automática para llenar los campos de fecha separados
+        # Mapeo forzado de DTO a campo legacy Título y Descripción van juntos
+        self.observaciones = f"Título: {titulo} | Descripción: {descripcion}"
+        
+        # Valores automáticos y por defecto para campos NOT NULL
         ahora = datetime.now()
-        self.anio = ahora.year
-        self.mes = ahora.month
-        self.dia = ahora.day
-        self.hora = ahora.time()
-        
-        # Valores por defecto para campos NOT NULL obligatorios en tu BD vieja
-        self.folio = f"F-{int(ahora.timestamp())}" # Generar un folio temporal
-        self.consecutivo = 0
-        self.referencia = "S/R"
-        self.observaciones = ""
-        self.acciones = ""
-        self.comentario = ""
-        self.obra = ""
-        self.tipo = "Incidencia"
-        self.notificacion = 0
+        self.fecha_creacion_db = ahora  # FECREP
+        self.folio = 0                  # CONREP (Confidencialidad: 0 = No)
+        self.frecuencia = "S/D"         # FREREP
+        self.campo_can = 0              # CANREP
+
 
     # 4. Propiedad Virtual para leer la fecha fácilmente en Python
     @property
-    def fecha_completa(self):
-        try:
-            return datetime(self.anio, self.mes, self.dia, self.hora.hour, self.hora.minute)
-        except:
-            return None
+    def fecha_completa(self) -> Optional[datetime]:
+        """Devuelve la fecha/hora de creación (FECREP) para el DTO."""
+        return self.fecha_creacion_db
 
-    # 5. Convertir a JSON (Para Service Encapsulation)
+    # 5. Convertir a diccionario (Para Service Encapsulation)
     def to_dict(self):
         return {
             'id': self.id,
             'folio': self.folio,
-            'titulo': self.titulo,
-            'descripcion': self.descripcion,
-            'estatus_id': self.estatus_id,
+            'observaciones_combinadas': self.observaciones, 
             'fecha': self.fecha_completa.strftime('%Y-%m-%d %H:%M') if self.fecha_completa else 'N/A',
             'usuario_id': self.usuario_id,
             'lugar_id': self.lugar_id
         }
 
     def __repr__(self):
-        return f"<Reporte {self.id} - {self.titulo}>"
+        return f"<Reporte {self.id} - {self.observaciones[:20]}>"
