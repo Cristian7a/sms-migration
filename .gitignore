@@ -1,0 +1,58 @@
+# Sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDEs / editores
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.tmp
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# PHP / Composer
+vendor/
+# composer.lock      # descomenta si no quieres trackear composer.lock
+
+# Python
+api/venv/
+__pycache__/
+*.py[cod]
+
+# Entornos y secretos
+.env
+.env.local
+.env.*.local
+
+# Logs / temporales
+*.log
+logs/
+tmp/
+temp/
+cache/
+
+# Builds / artefactos
+dist/
+build/
+
+# Windows thumbnail cache
+Thumbs.db
+
+# dompdf or generated fonts (ajusta si es necesario)
+dompdf/lib/fonts/
+dompdf/temp/
+
+# Misc
+*.sql
+*.sqlite
