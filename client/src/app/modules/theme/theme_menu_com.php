@@ -6,7 +6,7 @@ mysqli_select_db($conex, $database_conex);
 <link rel='stylesheet' id='plantilla'  href='styles/templates/plantilla.css' type='text/css' media='all' />
 <div class="barra_login">
 <?php if ($_SESSION["foto"]==""){ ?>
-<div class="loginimage"><a href="modules/profile/"><IMG height="35px" SRC="../../public/assets/images/usuario.png"></a></div> <?php }else { ?>
+<div class="loginimage"><a href="modules/profile/"><IMG height="35px" SRC="../../../public/assets/images/usuario.png"></a></div> <?php }else { ?>
 <div class="loginimage"><a href="modules/profile/"><IMG height="60px" SRC="modules/profile/<?php echo ($_SESSION["foto"]);?>"></a></div> 
 <?php }?>
 <div class="loginitem" align="right"><a href=""><?php echo utf8_encode($_SESSION["nombre"]); ?></a>
@@ -26,8 +26,8 @@ mysqli_select_db($conex, $database_conex);
 <body  BACKGROUND="<?php echo "modules/ajustes/visual/".$fondo; ?>">
 
 <div class="container js-isotope" data-isotope-options="{ "itemSelector": ".item", "layoutMod": "fitRows" }">
-	<div class="item item-blue"><a class="post-title" href="../index.php"><IMG height="100px" SRC="../../public/assets/images/icono_inicio.png"><br>Pagina principal</a></div>
-<div class="item item-blue" ><a class="post-title" href="modules/reportes_i"><IMG height="100px" SRC="../../public/assets/images/menu_rep.png">Reportes</a></div>
+	<div class="item item-blue"><a class="post-title" href="../index.php"><IMG height="100px" SRC="../../../../public/assets/images/icono_inicio.png"><br>Pagina principal</a></div>
+<div class="item item-blue" ><a class="post-title" href="modules/reportes_i"><IMG height="100px" SRC="../../../../public/assets/images/menu_rep.png">Reportes</a></div>
 <?php
 $ide=$_SESSION['user'];
 $query_i = "SELECT IDEINV FROM INV WHERE PERINV=$ide ";
