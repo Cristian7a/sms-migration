@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from src.config import Config
 from src.extensions import db
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
@@ -12,6 +13,8 @@ def create_app():
     CORS(app)
     db.init_app(app)
     JWTManager(app)
+    
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
     
     # Registrar Blueprints
     from src.routes.reportes_route import reportes_bp

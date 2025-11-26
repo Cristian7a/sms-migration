@@ -9,30 +9,29 @@ class EvidenciaDTO(BaseModel):
     tipo: str             
     url_acceso: Optional[str] = None 
 
-    # Esta configuración es OBLIGATORIA para aceptar objetos de SQLAlchemy
     class Config:
         from_attributes = True 
 
-# Modelo para CREAR un reporte
+# Modelo para CREAR 
 class ReporteCreateDTO(BaseModel):
-    titulo: str
-    fecha_evento: date
+    descripcion: str 
+    fecha_evento: date 
+    fecha_reporte: date 
     lugar_id: int
-    descripcion: str
     autor_id: int
+    confidencial: int 
+    frecuencia: str
+    area_id: Optional[str] = None 
 
-# Modelo para LEER un reporte
+# Modelo para LEER
 class ReporteReadDTO(BaseModel):
     id: int
-    titulo: str
     fecha_creacion: datetime
     fecha_evento: date
     lugar: str
     descripcion: str
     estado: str
     autor: UsuarioDTO
-    
-    # Lista de evidencias
     evidencias: List[EvidenciaDTO] = []
 
     class Config:

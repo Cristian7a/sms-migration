@@ -1,65 +1,111 @@
 $(function () {
+  console.log("--> 3.0 EJECUTANDO PARCHE FINAL DE SELECTORES <--");
+
+  // Esto desconecta cualquier evento "change" antiguo que esté bloqueando los selects
+  $("#area").off("change");
+  $("#emp").off("change");
+  $("#lugsus").off("change");
+
+  function llenarSelect(idSelector, promesa, keyId, keyTexto) {
+    var $sel = $(idSelector);
+    if ($sel.children("option").length <= 1) {
+      $sel.html('<option value="">Cargando...</option>');
+    }
+
+    promesa
+      .done(function (res) {
+        var lista = res.data || res; // Detecta si viene en .data o directo
+
+        $sel.empty().append('<option value="">-- SELECCIONE --</option>');
+
+        if (lista && lista.length > 0) {
+          $.each(lista, function (i, item) {
+            // Protección contra undefined
+            var texto = item[keyTexto] || "Sin Nombre";
+            var id = item[keyId];
+
+            $sel.append('<option value="' + id + '">' + texto + "</option>");
+          });
+        } else {
+          $sel.append('<option value="">No hay datos</option>');
+        }
+
+        // Reactivar el select por si el código anterior lo deshabilitó
+        $sel.prop("disabled", false);
+      })
+      .fail(function (xhr) {
+        console.error("Error en " + idSelector, xhr);
+        $sel.html('<option value="">Error de carga</option>');
+      });
+  }
+
+  // 1. Cargar Áreas
+  llenarSelect("#area", ReportesService.obtenerAreas(), "id", "nombre");
+
+  // 2. Cargar Lugares
+  llenarSelect("#lugsus", ReportesService.obtenerLugares(), "id", "nombre");
+
+  // 3. Cargar Empleados
+  llenarSelect(
+    "#emp",
+    ReportesService.obtenerEmpleados(),
+    "id",
+    "nombre_completo"
+  );
+
+  if ($("#form_rep").data("validator")) {
+    $("#form_rep").data("validator").destroy();
+  }
+
   $("#form_rep").validate({
     rules: {
-      titulo: { required: true, maxlength: 255 },
-      des: { required: true },
       area: { required: true },
       emp: { required: true },
       fecsus: { required: true },
       fecrep: { required: true },
       lugsus: { required: true },
-      obs: { maxlength: "300" },
+      obs: { maxlength: 300 },
     },
     messages: {
-      titulo: "Ingrese un título para el reporte.",
-      des: "Ingrese la descripción del reporte.",
-      area: " Elija un área",
-      emp: "Elija un nombre",
-      fecsus: "Elija una fecha de suceso",
-      fecrep: "Elija una fecha de reporte",
-      lugsus: "Elija un lugar del suceso",
-      obs: { maxlength: " Máximo 300 caracteres" },
+      area: "Seleccione un área",
+      emp: "Seleccione un empleado",
+      fecsus: "Indique la fecha",
+      fecrep: "Indique la fecha",
+      lugsus: "Indique el lugar",
+      obs: { maxlength: "Máximo 300 caracteres" },
     },
     submitHandler: function (form) {
-      $(form)
-        .find("#enviar")
-        .attr("disabled", "disabled")
-        .attr("value", "Enviando..."); // 1. CONSTRUCCIÓN del objeto JSON (Canonical Schema: ReporteCreateDTO) // SOLO SE ENVÍAN LOS 5 CAMPOS REQUERIDOS POR LA API DE PYTHON.
+      var $btn = $(form).find("#enviar");
+      $btn.attr("disabled", true).val("Guardando...");
 
-      var objetoReporte = {
-        titulo: $("#titulo").val(), // Mapea a ReporteCreateDTO.titulo
-        descripcion: $("#des").val(), // Mapea a ReporteCreateDTO.descripcion // CAMPOS EXISTENTES EN EL DTO
+      var datosDTO = {
+        descripcion: $("#obs").val() || "",
+        fecha_evento: $("#fecsus").val(),
+        fecha_reporte: $("#fecrep").val(),
+        autor_id: parseInt($("#emp").val()) || null,
+        confidencial: parseInt($("#con").val()) || 0,
+        lugar_id: parseInt($("#lugsus").val()) || null,
+        frecuencia: $("#freeve").val() || "NINGUNA",
+      };
 
-        fecha_evento: $("#fecsus").val(), // Mapea a ReporteCreateDTO.fecha_evento (Formato 'YYYY-MM-DD')
-        lugar_id: parseInt($("#lugsus").val()), // Mapea a ReporteCreateDTO.lugar_id
-        autor_id: parseInt($("#emp").val()), // Mapea a ReporteCreateDTO.autor_id
-      }; // 2. ENVÍO a la nueva API de Python
+      console.log("Enviando JSON Corregido:", datosDTO);
 
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:5000/api/v1/reportes/", // URL correcta.
-        data: JSON.stringify(objetoReporte),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-          alert("¡Reporte guardado con éxito! ID: " + data.id);
-          console.log("Respuesta del Canonical Schema:", data);
-          location.reload();
-        },
-        error: function (xhr, status, error) {
-          console.error("Error de la API:", xhr.responseText);
-          alert(
-            "Error al conectar con la API o error de validación. Revisa la consola del navegador y la terminal de Python."
-          );
-          $(form)
-            .find("#enviar")
-            .removeAttr("disabled")
-            .attr("value", "Enviar");
-        },
-      });
+      ReportesService.crear(datosDTO)
+        .done(function () {
+          alert("¡Guardado correctamente!");
+          window.location.reload();
+        })
+        .fail(function (xhr) {
+          var msg = xhr.responseJSON
+            ? xhr.responseJSON.message || xhr.responseJSON.error
+            : "Error desconocido";
+          alert("Error: " + msg);
+          $btn.attr("disabled", false).val("Guardar");
+        });
     },
   });
 });
+
 /*
 $(function(){
 	
