@@ -1,19 +1,27 @@
 from flask import Flask
 from flask_cors import CORS
-from .config import Config
-from .extensions import db
+from flask_jwt_extended import JWTManager
+from src.config import Config
+from src.extensions import db
 
 def create_app():
-    # Inicializar Flask
     app = Flask(__name__)
-    
     app.config.from_object(Config)
     
-    CORS(app) 
+    # Inicializar extensiones
+    CORS(app)
     db.init_app(app)
+    JWTManager(app)
     
-    @app.route('/')
-    def index():
-        return {"status": "API SMS Corriendo", "db": app.config['SQLALCHEMY_DATABASE_URI']}
-
+    # Registrar Blueprints
+    from src.routes.reportes_route import reportes_bp
+    from src.routes.auth_route import auth_bp 
+    from src.routes.gestion_route import gestion_bp
+    from src.routes.monitoreo_route import monitoreo_bp
+    
+    app.register_blueprint(reportes_bp, url_prefix='/api/v1/reportes')
+    app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
+    app.register_blueprint(gestion_bp, url_prefix='/api/v1/gestion')
+    app.register_blueprint(monitoreo_bp, url_prefix='/api/v1/monitoreo')
+    
     return app

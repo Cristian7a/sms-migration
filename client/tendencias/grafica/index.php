@@ -18,7 +18,7 @@ mysqli_select_db($conex, $database_conex);
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel='stylesheet' id='plantilla'  href='../css/plantilla.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='plantilla'  href="/trabajos/sms-migration/client/src/app/styles/templates/plantilla.css" type='text/css' media='all' />
         <script type="text/javascript">
             window.onload = function () {
                 var dataLength = 0;

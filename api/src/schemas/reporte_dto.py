@@ -1,9 +1,19 @@
 from pydantic import BaseModel
 from datetime import date, datetime
-from typing import Optional
+from typing import List, Optional
 from .usuario_dto import UsuarioDTO
 
-# Modelo para CREAR un reporte (lo que recibes del Frontend)
+class EvidenciaDTO(BaseModel):
+    id: int
+    nombre_archivo: str
+    tipo: str             
+    url_acceso: Optional[str] = None 
+
+    # Esta configuración es OBLIGATORIA para aceptar objetos de SQLAlchemy
+    class Config:
+        from_attributes = True 
+
+# Modelo para CREAR un reporte
 class ReporteCreateDTO(BaseModel):
     titulo: str
     fecha_evento: date
@@ -11,16 +21,19 @@ class ReporteCreateDTO(BaseModel):
     descripcion: str
     autor_id: int
 
-# Modelo para LEER un reporte (lo que envías al Frontend - Canonical Schema completo)
+# Modelo para LEER un reporte
 class ReporteReadDTO(BaseModel):
     id: int
     titulo: str
     fecha_creacion: datetime
     fecha_evento: date
-    lugar: str             # Nombre del lugar, no el ID
+    lugar: str
     descripcion: str
-    estado: str            # Normalizado (ej: ABIERTO)
-    autor: UsuarioDTO      # Objeto anidado completo (¡Gran ventaja del Patrón 1!)
+    estado: str
+    autor: UsuarioDTO
+    
+    # Lista de evidencias
+    evidencias: List[EvidenciaDTO] = []
 
     class Config:
         from_attributes = True
