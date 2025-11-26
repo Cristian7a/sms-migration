@@ -11,5 +11,5 @@ $_SESSION['cargo1']=$_SESSION['cargo'];
 $_SESSION['cargo']=$cargo;
 $_SESSION['nivel1']=$_SESSION['nivel'];
 $_SESSION['nivel']=$nivel;
-header("Location: ../app.php" );
+header("Location: ../../app.php" );
 ?>

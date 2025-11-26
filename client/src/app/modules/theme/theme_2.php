@@ -197,7 +197,7 @@
 <!-- End Service Section -->
 
 
-<?php include("styles/theme_2/pie.html"); ?>
+<?php include("../../styles/theme_2/pie.html"); ?>
 
 <script type="text/javascript" src="../../styles/theme_2/js/jquery-1.9.1.min.js"></script>
 <script src="../../styles/theme_2/js/isotope.pkgd.min.js"></script>
