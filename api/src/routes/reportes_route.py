@@ -8,20 +8,19 @@ reportes_bp = Blueprint('reportes_api_bp', __name__)
 servicio = ReporteService()
 
 @reportes_bp.route('/<int:id>/evidencias', methods=['POST'])
-@jwt_required()
+# @jwt_required() # Descomenta si ya tienes el token en el frontend
 def upload_evidence(id):
-    """
-    Sube una evidencia para un reporte específico.
-    Uso: Form-Data con key 'archivo' y opcional 'descripcion'.
-    """
     if 'archivo' not in request.files:
-        return jsonify({'error': 'No se envió la parte del archivo'}), 400
+        return jsonify({'error': 'Falta el archivo'}), 400
         
     archivo = request.files['archivo']
-    descripcion = request.form.get('descripcion', '')
+    # campos que antes enviaba tu formulario PHP
+    nombre = request.form.get('nom', 'ADICIONAL') # NOMEVI
+    tipo = request.form.get('tip', 'DOCUMENTAL')  # TIPEVI
 
     try:
-        resultado = servicio.agregar_evidencia(id, archivo, descripcion)
+        # Llamamos al servicio con los nuevos parámetros
+        resultado = servicio.agregar_evidencia(id, archivo, nombre, tipo)
         
         if not resultado:
             return jsonify({'error': 'Reporte no encontrado'}), 404
@@ -31,9 +30,8 @@ def upload_evidence(id):
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
     except Exception as e:
-        print(f"Error subiendo archivo: {e}")
-        return jsonify({'error': 'Error interno al procesar archivo'}), 500
-
+        print(f"Error interno: {e}")
+        return jsonify({'error': 'Error al procesar evidencia'}), 500
 
 @reportes_bp.route('', methods=['GET'])
 def index():

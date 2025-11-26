@@ -19,7 +19,7 @@ class ReporteService(IReporteRepository):
         if not fecha_creacion_real:
             fecha_creacion_real = datetime.now()
 
-        # Mapeo de evidencias
+        # Mapeo de evidencias para lectura (GET)
         lista_evidencias = []
         if modelo_db.evidencias:
             lista_evidencias = [
@@ -27,6 +27,7 @@ class ReporteService(IReporteRepository):
                     id=e.id,
                     nombre_archivo=e.nombre_archivo,
                     tipo=e.tipo,
+                    # Construimos la URL para que el frontend pueda ver la imagen
                     url_acceso=f"/static/uploads/{e.nombre_archivo}"
                 ) for e in modelo_db.evidencias
             ]
@@ -58,10 +59,8 @@ class ReporteService(IReporteRepository):
 
     def crear_reporte(self, dto: ReporteCreateDTO) -> ReporteReadDTO:
         nuevo_reporte = Reporte(dto)
-        
         db.session.add(nuevo_reporte)
         db.session.commit()
-        
         return self._mapear_a_dto(nuevo_reporte)
 
     def obtener_por_id(self, id: int) -> ReporteReadDTO:
@@ -70,38 +69,50 @@ class ReporteService(IReporteRepository):
             return None
         return self._mapear_a_dto(rep)
     
-    def agregar_evidencia(self, reporte_id: int, archivo, descripcion: str = ""):
+    def agregar_evidencia(self, reporte_id: int, archivo, nombre_evidencia: str, tipo_evidencia: str):
         reporte = Reporte.query.get(reporte_id)
         if not reporte:
             return None
 
-        if archivo.filename == '':
+        if not archivo or archivo.filename == '':
             raise ValueError("El archivo no tiene nombre")
 
+        # 1. Procesamiento del archivo y nombre único
         filename = secure_filename(archivo.filename)
-        nombre_unico = f"{reporte_id}_{filename}"
-        extension = filename.rsplit('.', 1)[1].lower() if '.' in filename else ''
-        ruta_relativa = f"uploads/{nombre_unico}" 
+        # Usamos timestamp para evitar colisiones de nombres
+        nombre_unico = f"{reporte_id}_{int(datetime.now().timestamp())}_{filename}"
         
-        upload_folder = current_app.config['UPLOAD_FOLDER']
+        # Validación de seguridad: longitud máxima de nombre
+        if len(nombre_unico) > 140: 
+             ext = filename.rsplit('.', 1)[1].lower() if '.' in filename else ''
+             nombre_unico = f"{reporte_id}_{int(datetime.now().timestamp())}_file.{ext}"
+
+        # 2. Guardar archivo físico
+        upload_folder = current_app.config.get('UPLOAD_FOLDER', 'src/static/uploads')
         os.makedirs(upload_folder, exist_ok=True)
         ruta_fisica = os.path.join(upload_folder, nombre_unico)
-        
         archivo.save(ruta_fisica)
 
+        # 3. Ruta web relativa (para la BD)
+        ruta_web = "uploads/" 
+
+        # 4. Crear registro en BD
         nueva_evidencia = Evidencia(
             reporte_id=reporte.id,
-            descripcion=descripcion[:40],
-            nombre_archivo=nombre_unico,
-            ruta=ruta_relativa,
-            tipo=extension
+            descripcion=nombre_evidencia,  # NOMEVI
+            tipo=tipo_evidencia,           # TIPEVI
+            nombre_archivo=nombre_unico,   # FILEVI
+            ruta=ruta_web                  # RUTEVI
         )
 
         db.session.add(nueva_evidencia)
         db.session.commit()
 
+        # 5. Preparar respuesta DTO
         dto = EvidenciaDTO.model_validate(nueva_evidencia)
-        dto.url_acceso = f"/static/{ruta_relativa}" 
+        # Asignar la URL manualmente para que el frontend la reciba
+        dto.url_acceso = f"/static/uploads/{nombre_unico}"
+        
         return dto
     
     @staticmethod
