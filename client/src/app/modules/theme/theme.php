@@ -70,7 +70,7 @@ if ($totalRows_r > 0) {
 <div class="item item-skyblue"><a class="post-title" href="#link#"><IMG height="100px" SRC="imagenes/menu_cap.png">Capacitaci&#243;n S.M.S</a></div>
 <div class="item item-teal"><a class="post-title" href="#link#"><IMG height="100px" SRC="imagenes/menu_enc.png">Encuestas y evaluaciones</a></div>
 -->
-<div class="item item-gray"><a class="post-title" href="ajustes"><IMG height="90%" SRC="../../public/assets/images/conf.png">Ajustes</a></div>
+<div class="item item-gray"><a class="post-title" href="modules/ajustes"><IMG height="90%" SRC="../../public/assets/images/conf.png">Ajustes</a></div>
 </div>
 </body>
 </html>

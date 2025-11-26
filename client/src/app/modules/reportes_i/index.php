@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION["user"])){ 
     if ($_SESSION["nivel"]>=3){ 
      $user=$_SESSION['user'];
-     require_once("../conex/conex.php");
+     require_once("../../config/conex.php");
      mysqli_select_db($conex, $database_conex);
 ?>
 
@@ -95,9 +95,9 @@ $estatus='SIN GESTIONAR';
                       $repevi = mysqli_query($conex, $query_repevi) or die(mysqli_error($conex));
                       $totalRows_repevi = mysqli_num_rows($repevi);
                       if ($totalRows_repevi > 0) { ?>
-                <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../imagenes/evidencia.png"></a>
+                <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../public/assets/images/evidencia.png"></a>
                 <?php }else{ ?>
-                <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../imagenes/folder_vacio.png"></a>
+                <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../public/assets/images/folder_vacio.png"></a>
                 <?php } ?> 
                 </td>
                 <td align="center"><?php echo $estatus; ?></td>  

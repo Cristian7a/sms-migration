@@ -39,7 +39,7 @@ $Result1=mysqli_query($conex, $insertSQL) or die (mysqli_error($conex));
 			if ($_SESSION["nivel"]<=4){
 			
 		  	header("Location: ../../index.php" );
-		 require_once(" modules/ajustes/visual/config/conex.php");
+		 require_once("../modules/ajustes/visual/config/conex.php");
 		 mysqli_select_db($conex, $database_conex);
 		$log2 = mysqli_query($conex,"SELECT tip_asp,img_asp FROM asp WHERE ide_usu=$user") or die(mysqli_error($conex));
 
