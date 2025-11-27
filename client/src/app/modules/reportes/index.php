@@ -17,8 +17,8 @@ if (isset($_SESSION["user"])){
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/validar_lug.js"></script>
 
-    <script src="../../../public/assets/js/api/config.js"></script>
-    <script src="../../../public/assets/js/api/reportes.service.js"></script>
+    <script src="../../../../public/assets/js/api/config.js"></script>
+    <script src="../../../../public/assets/js/api/reportes.service.js"></script>
 
     <script src="js/validar_rep.js?v=2"></script>
 
@@ -117,15 +117,15 @@ $theme = $_SESSION['theme'] ?? 0;
                                 $totalRows_repevi = mysqli_num_rows($repevi);
                                 
                                 if ($totalRows_repevi > 0) { ?>
-                                    <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../public/assets/images/evidencia.png"></a>
+                                    <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../../public/assets/images/evidencia.png"></a>
                                 <?php } else { ?>
-                                    <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../public/assets/images/folder_vacio.png"></a>
+                                    <a href="evidencias.php?IDEREP=<?php echo $iderep;?>"><IMG height="20px" SRC="../../../../public/assets/images/folder_vacio.png"></a>
                                 <?php } ?> 
                             </td>
 
                             <td align="center">
                                 <a href="javascript:openventana_var('.ventana_2',<?php echo $iderep; ?>,'IDREP',1);">
-                                    <IMG height="20px" SRC="../../../public/assets/images/edit.png"> </a>
+                                    <IMG height="20px" SRC="../../../../public/assets/images/edit.png"> </a>
                             </td>
 
                             <?php 
@@ -136,13 +136,13 @@ $theme = $_SESSION['theme'] ?? 0;
                             if ($totalRows_gestion == 0) { ?>
                                 <td align="center">
                                     <a href="../gestion/ver_gestion.php?IDEREP=<?php echo $iderep;?>">
-                                        <IMG height="20px" SRC="../../../public/assets/images/sin_gestion.png" title="Sin gestionar">
+                                        <IMG height="20px" SRC="../../../../public/assets/images/sin_gestion.png" title="Sin gestionar">
                                     </a>
                                 </td> 
                             <?php } else { ?>
                                 <td align="center">
                                     <a href="../gestion/ver_gestion.php?IDEREP=<?php echo $iderep;?>">
-                                        <IMG height="20px" SRC="../../../public/assets/images/gestion.png" title="En gestión">
+                                        <IMG height="20px" SRC="../../../../public/assets/images/gestion.png" title="En gestión">
                                     </a>
                                 </td>    
                             <?php } 

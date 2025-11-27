@@ -1,61 +1,102 @@
- <div class="ven_modal" id="_3" >
-  <div class="cerrar"><a href="javascript:cerrarventana('.ventana_3');">x</a></div>
-
-      <form method="post" id="formregistro"  action="query/mod_ges.php" name="formregistro">
-                    <br>
-                    <br>
-                    <h3>Gesti&#243;n del peligro</h3>
-                   <hr>
-                    <table class="tabla_ven" >
-                        <tr>
-                            <td width="260px">Condición:</td>
-                            <td id="cond" width="350px"></td>
-                        </tr>
-                        <tr>
-                            <td>Objeto:</td>
-                            <td id="obje"></td>
-                        </tr>
-                        <tr>
-                            <td>Actividad:</td>
-                            <td id="acti"></td> 
-                        </tr>
-                        <tr>
-                            <td>Categoría del peligro:</td>
-                      
-                        <td id="cate"></td>
- 
-                        </tr>
-                        <tr>
-                            <td>Métodos de identificación:</td>
-                   <td id="meto">
-                        </td>
-                          
-                        </tr>
-                        <tr>
-                            <td>Riesgo operacional:</td>
-                        
-                        <td id="ries"></td>
-                         
-                        </tr>
-                        <tr>
-                            <td>Identificación del peligro genérico:</td>
-                        <td id="iden"></td>
-                      </tr>
-                        <tr>
-                            <td><input type="hidden" id="IDREP" name="IDREP"  /></td>
-                      <td>
-                    <div class="buttons">
-            <input type="submit" class="boton"  value="Guardar" name="enviar" id="enviar">
-          </div> </td></tr>
-        </table>
-       
-     
-
-    
-
-          
-
-
-      </form>
+<div class="ven_modal" id="_3">
+  <div class="cerrar">
+    <a href="javascript:cerrarventana('.ventana_3');">x</a>
   </div>
 
+  <form method="post" id="form_editar_gestion" name="form_editar_gestion">
+    <br />
+    <br />
+    <h3>Editar Gestión del Peligro</h3>
+    <hr />
+    <table class="tabla_ven">
+      <tr>
+        <td width="260px">Condición:</td>
+        <td width="350px">
+          <input
+            type="text"
+            id="con_e"
+            name="con_e"
+            class="input-normal"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Objeto:</td>
+        <td>
+          <input
+            type="text"
+            id="obj_e"
+            name="obj_e"
+            class="input-normal"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Actividad:</td>
+        <td>
+          <input
+            type="text"
+            id="act_e"
+            name="act_e"
+            class="input-normal"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Categoría del peligro:</td>
+        <td>
+          <select id="cat_e" name="cat_e">
+            <option value="NATURAL">NATURAL</option>
+            <option value="TÉCNICO">TÉCNICO</option>
+            <option value="ECONOMICO">ECONÓMICO</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Métodos de identificación:</td>
+        <td>
+          <select id="met_ide_e" name="met_ide_e">
+            <option value="REACTIVO">REACTIVO</option>
+            <option value="PROACTIVO">PROACTIVO</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Riesgo operacional:</td>
+        <td>
+          <select id="rie_ope_e" name="rie_ope_e">
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Identificación del peligro genérico:</td>
+        <td>
+          <input
+            type="text"
+            id="ide_gen_e"
+            name="ide_gen_e"
+            class="input-normal"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><input type="hidden" id="IDREP" name="IDREP" /></td>
+        <td>
+          <div class="buttons">
+            <button type="submit" class="boton" id="btn_guardar_edicion">
+              Actualizar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<script src="js/editar_gestion.js"></script>

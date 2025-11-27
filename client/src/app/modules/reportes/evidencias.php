@@ -10,8 +10,8 @@ if (isset($_SESSION["user"]) && $_SESSION["nivel"] <= 2){
     <?php include("header.html"); ?>
     <script src="../../scripts/jquery-3.3.1.min.js"></script>
     
-    <script src="../../../public/assets/js/api/config.js"></script>
-    <script src="../../../public/assets/js/api/reportes.service.js"></script>
+    <script src="../../../../public/assets/js/api/config.js"></script>
+    <script src="../../../../public/assets/js/api/reportes.service.js"></script>
 
     <script src="js/evidencias.js"></script> 
     

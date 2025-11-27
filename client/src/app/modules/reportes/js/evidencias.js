@@ -47,7 +47,9 @@ $(function () {
     // Lógica para icono PDF vs Imagen
     const esPdf = evi.nombre_archivo.toLowerCase().endsWith(".pdf");
     // ruta al icono_pdf
-    const imgUrl = esPdf ? "../imagenes/icono_pdf.png" : urlCompleta;
+    const imgUrl = esPdf
+      ? "../../../../public/assets/images/icono_pdf.png"
+      : urlCompleta;
 
     return `
         <div class="image_wrapper" id="evi-${evi.id}">

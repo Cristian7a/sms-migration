@@ -12,6 +12,8 @@ if (isset($_GET['ven'])){
 <link rel='stylesheet' id='plantilla'  href='css/plantilla.css' type='text/css' media='all' />
 <script src = "../../scripts/jquery-3.3.1.min.js"></script>
 <script src = "../../scripts/control.js"></script>
+<script src="../../../../public/assets/js/api/config.js"></script>
+<script src="../../../../public/assets/js/api/gestion.service.js"></script>
 <script src = "js/jquery.validate.min.js"></script>
 <script src = "js/validar_compo.js"></script>
 <script src = "js/validar_inv.js"></script>

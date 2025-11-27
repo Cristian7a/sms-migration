@@ -16,3 +16,34 @@ class PropuestaResponseDTO(BaseModel):
     
     class Config:
         from_attributes = True
+
+class PeligroUpdateDTO(BaseModel):
+    reporte_id: int
+    condicion: str
+    objeto: str
+    actividad: str
+    categoria: str
+    metodo: str
+    riesgo_operacional: str
+    generador: str
+
+class PeligroResponseDTO(BaseModel):
+    reporte_id: int
+    condicion: str
+    objeto: str
+    actividad: str
+    categoria: str
+    metodo: str
+    riesgo_operacional: str
+    generador: str
+    
+    class Config:
+        from_attributes = True
+
+class RiesgoCreateDTO(BaseModel):
+    reporte_id: int  # ID del peligro/reporte padre
+    componente: str  # CESPRIE
+    descripcion: str # DESRIE
+    consecuencia: str # CONRIE
+    probabilidad: int # PROBRIE
+    gravedad: str    # GRARIE

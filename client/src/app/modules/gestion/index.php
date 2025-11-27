@@ -10,6 +10,9 @@ $user=$_SESSION['user'];
 <script src = "../../scripts/control.js"></script>
 <script type="text/javascript" language="javascript" src="../TableFilter-master\dist\tablefilter/tablefilter.js"></script> 
 
+<script src="../../../../public/assets/js/api/config.js"></script>
+<script src="../../../../public/assets/js/api/gestion.service.js"></script>
+
 <?php  
 require_once("head.html"); 
 
