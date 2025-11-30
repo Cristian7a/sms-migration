@@ -72,5 +72,6 @@ def get_lugares():
 
 @reportes_bp.route('/catalogos/empleados', methods=['GET'])
 def get_empleados():
-    data = ReporteService.obtener_empleados()
+    area_id = request.args.get('area')
+    data = ReporteService.obtener_empleados(area_id)
     return jsonify({'status': 'success', 'data': data}), 200

@@ -34,9 +34,13 @@ var ReportesService = {
     });
   },
 
-  obtenerEmpleados: function () {
+  obtenerEmpleados: function (areaId) {
+    var url = ApiConfig.baseUrl + "/reportes/catalogos/empleados";
+    if (areaId) {
+      url += "?area=" + areaId;
+    }
     return $.ajax({
-      url: ApiConfig.baseUrl + "/reportes/catalogos/empleados",
+      url: url,
       method: "GET",
       headers: ApiConfig.getHeaders(),
     });

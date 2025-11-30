@@ -23,6 +23,11 @@
                        </tr>
                        </TBODY>
                         </table>
+                        <br>
+    <button class="boton" onclick="$('#IDERIE_PRO').val('<?php echo $iderie; ?>'); $('#IDEREP_PRO').val('<?php echo $iderep; ?>'); openventana('.ventana_15');">
+        + AGREGAR PROPUESTA
+    </button>
+    <br><br>
                         <!--
                         <div class="subtabla">
                           <hr>
@@ -78,7 +83,7 @@
                            <br>
                            <?php }else{ ?>
                            <br>
-                           <b>Responsable(s) de ejecutar propuesta:</b><a href="Javascript:openventana_var('.ventana_11',<?php echo $idepro; ?>,'',11);"><IMG height='10px' SRC='../imagenes/edit.png'></a><br>
+                           <b>Responsable de ejecutar propuesta:</b><a href="javascript:void(0);" onclick="$('#IDEPRO_RES').val('<?php echo $idepro; ?>'); openventana_var('.ventana_11',<?php echo $idepro; ?>,'',11);"><IMG height='10px' SRC='../imagenes/edit.png'></a><br>
                            <?php
                             do { 
                           

@@ -14,12 +14,13 @@ if (isset($_GET['ven'])){
 <script src = "../../scripts/control.js"></script>
 <script src="../../../../public/assets/js/api/config.js"></script>
 <script src="../../../../public/assets/js/api/gestion.service.js"></script>
+<script src="../../../../public/assets/js/api/reportes.service.js"></script>
 <script src = "js/jquery.validate.min.js"></script>
 <script src = "js/validar_compo.js"></script>
 <script src = "js/validar_inv.js"></script>
 <script src = "js/validar_pro.js"></script>
-<script src = "js/validar_res.js"></script>
-<script src = "js/validar_res_asignar.js"></script>
+<script src = "js/asignar_responsable.js"></script>
+<script src = "js/responsable_ejecutar.js"></script>
 <script src = "js/validar_ejemplo_taxonomia.js"></script>
 <!--<script src = "js/validar_comen.js"></script>-->
 <script src = "js/validar_eva.js"></script>

@@ -3,10 +3,15 @@ from typing import Optional
 from datetime import date
 
 class PropuestaCreateDTO(BaseModel):
-    reporte_id: int
+    riesgo_id: int 
     descripcion: str
     responsable_id: Optional[int] = None
     fecha_limite: Optional[date] = None
+
+
+class ResponsableUpdateDTO(BaseModel):
+    propuesta_id: int
+    responsable_id: int
 
 class PropuestaResponseDTO(BaseModel):
     id: int
@@ -41,9 +46,14 @@ class PeligroResponseDTO(BaseModel):
         from_attributes = True
 
 class RiesgoCreateDTO(BaseModel):
-    reporte_id: int  # ID del peligro/reporte padre
-    componente: str  # CESPRIE
-    descripcion: str # DESRIE
-    consecuencia: str # CONRIE
-    probabilidad: int # PROBRIE
-    gravedad: str    # GRARIE
+    reporte_id: int  
+    componente: str  
+    descripcion: str 
+    consecuencia: str 
+    probabilidad: int 
+    gravedad: str    
+
+class ResponsableEjecucionCreateDTO(BaseModel):
+    propuesta_id: int
+    empleado_id: int
+    fecha_limite: date

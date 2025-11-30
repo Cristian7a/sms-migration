@@ -1,6 +1,5 @@
 from src.extensions import db
 
-# 1. Tabla de Empleados (Datos personales)
 class Empleado(db.Model):
     __tablename__ = 'emp'
     id = db.Column('IDEEMP', db.Integer, primary_key=True)
@@ -14,19 +13,20 @@ class Empleado(db.Model):
     def nombre_completo(self):
         return f"{self.nombre} {self.apellido_p} {self.apellido_m}".strip()
 
-# 2. Tabla de Cargos (Puestos)
+# Tabla de Cargos (Puestos)
 class Cargo(db.Model):
     __tablename__ = 'car'
     id = db.Column('IDECAR', db.Integer, primary_key=True)
     nombre = db.Column('NOMCAR', db.String(40))
+    area_id = db.Column('COOCAR', db.String(3))
 
-# 3. Tabla de Roles/Privilegios
+# Tabla de Roles/Privilegios
 class Rol(db.Model):
     __tablename__ = 'pri'
     id = db.Column('IDEPRI', db.Integer, primary_key=True)
     nombre = db.Column('NOMPRI', db.String(25))
 
-# 4. Tabla de Sesión (Contraseñas y Rol)
+# Tabla de Sesión (Contraseñas y Rol)
 class Sesion(db.Model):
     __tablename__ = 'ses'
     id = db.Column('IDESES', db.Integer, db.ForeignKey('per.IDEPER'), primary_key=True)
@@ -36,8 +36,7 @@ class Sesion(db.Model):
     # Relación con Rol
     rol = db.relationship('Rol', uselist=False)
 
-# 5. Tabla Principal de Usuario (Permisos/Relación)
-# Esta es la tabla central 'per' que une todo.
+#  Tabla Principal de Usuario (Permisos/Relación)
 class Usuario(db.Model):
     __tablename__ = 'per'
     id = db.Column('IDEPER', db.Integer, primary_key=True)

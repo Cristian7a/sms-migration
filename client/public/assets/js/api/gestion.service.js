@@ -1,5 +1,4 @@
 var GestionService = {
-  // Reemplaza a: alta_ges.php
   guardarPeligro: function (datosPeligro) {
     return $.ajax({
       url: ApiConfig.baseUrl + "/gestion/peligros",
@@ -11,7 +10,6 @@ var GestionService = {
     });
   },
 
-  // Reemplaza a: alta_pro.php
   crearPropuesta: function (datosPropuesta) {
     return $.ajax({
       url: ApiConfig.baseUrl + "/gestion/propuestas",
@@ -37,6 +35,28 @@ var GestionService = {
       method: "POST",
       headers: ApiConfig.getHeaders(),
       data: JSON.stringify(datosRiesgo),
+      contentType: "application/json",
+      dataType: "json",
+    });
+  },
+
+  asignarResponsable: function (datos) {
+    return $.ajax({
+      url: ApiConfig.baseUrl + "/gestion/propuestas/responsable",
+      method: "PUT",
+      headers: ApiConfig.getHeaders(),
+      data: JSON.stringify(datos),
+      contentType: "application/json",
+      dataType: "json",
+    });
+  },
+
+  asignarEjecutor: function (datos) {
+    return $.ajax({
+      url: ApiConfig.baseUrl + "/gestion/responsables",
+      method: "POST",
+      headers: ApiConfig.getHeaders(),
+      data: JSON.stringify(datos),
       contentType: "application/json",
       dataType: "json",
     });

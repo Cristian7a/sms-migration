@@ -2,7 +2,7 @@ from typing import List
 from src.extensions import db
 from src.models.rep_model import Reporte, Area, Lugar
 from src.models.evidencia_model import Evidencia
-from src.models.usuario_model import Usuario, Empleado
+from src.models.usuario_model import Usuario, Empleado, Cargo
 from src.schemas.reporte_dto import ReporteReadDTO, ReporteCreateDTO, EvidenciaDTO
 from src.schemas.usuario_dto import UsuarioDTO
 from src.domain.contract import IReporteRepository  
@@ -19,7 +19,6 @@ class ReporteService(IReporteRepository):
         if not fecha_creacion_real:
             fecha_creacion_real = datetime.now()
 
-        # Mapeo de evidencias para lectura (GET)
         lista_evidencias = []
         if modelo_db.evidencias:
             lista_evidencias = [
@@ -27,7 +26,7 @@ class ReporteService(IReporteRepository):
                     id=e.id,
                     nombre_archivo=e.nombre_archivo,
                     tipo=e.tipo,
-                    # Construimos la URL para que el frontend pueda ver la imagen
+                    # URL para que el frontend pueda ver la imagen
                     url_acceso=f"/static/uploads/{e.nombre_archivo}"
                 ) for e in modelo_db.evidencias
             ]
@@ -77,38 +76,37 @@ class ReporteService(IReporteRepository):
         if not archivo or archivo.filename == '':
             raise ValueError("El archivo no tiene nombre")
 
-        # 1. Procesamiento del archivo y nombre único
+        # Procesamiento del archivo y nombre único
         filename = secure_filename(archivo.filename)
-        # Usamos timestamp para evitar colisiones de nombres
+        # timestamp para evitar colisiones de nombres
         nombre_unico = f"{reporte_id}_{int(datetime.now().timestamp())}_{filename}"
         
-        # Validación de seguridad: longitud máxima de nombre
+        # Validación de seguridad longitud máxima de nombre
         if len(nombre_unico) > 140: 
              ext = filename.rsplit('.', 1)[1].lower() if '.' in filename else ''
              nombre_unico = f"{reporte_id}_{int(datetime.now().timestamp())}_file.{ext}"
 
-        # 2. Guardar archivo físico
+        
         upload_folder = current_app.config.get('UPLOAD_FOLDER', 'src/static/uploads')
         os.makedirs(upload_folder, exist_ok=True)
         ruta_fisica = os.path.join(upload_folder, nombre_unico)
         archivo.save(ruta_fisica)
 
-        # 3. Ruta web relativa (para la BD)
+        # Ruta web relativa (para la BD)
         ruta_web = "uploads/" 
 
-        # 4. Crear registro en BD
+        
         nueva_evidencia = Evidencia(
             reporte_id=reporte.id,
-            descripcion=nombre_evidencia,  # NOMEVI
-            tipo=tipo_evidencia,           # TIPEVI
-            nombre_archivo=nombre_unico,   # FILEVI
-            ruta=ruta_web                  # RUTEVI
+            descripcion=nombre_evidencia,  
+            tipo=tipo_evidencia,           
+            nombre_archivo=nombre_unico,   
+            ruta=ruta_web                  
         )
 
         db.session.add(nueva_evidencia)
         db.session.commit()
 
-        # 5. Preparar respuesta DTO
         dto = EvidenciaDTO.model_validate(nueva_evidencia)
         # Asignar la URL manualmente para que el frontend la reciba
         dto.url_acceso = f"/static/uploads/{nombre_unico}"
@@ -126,13 +124,19 @@ class ReporteService(IReporteRepository):
         return [{"id": l.id, "nombre": l.nombre} for l in lugares]
 
     @staticmethod
-    def obtener_empleados():
-        usuarios = Usuario.query.join(Empleado).all()
+    def obtener_empleados(area_id=None):
+        query = Usuario.query.join(Empleado).join(Cargo)
+        
+        if area_id:
+            query = query.filter(Cargo.area_id == area_id)
+            
+        usuarios = query.all()
+        
         resultado = []
         for u in usuarios:
             if u.empleado: 
                 resultado.append({
                     "id": u.id, 
-                    "nombre_completo": u.empleado.nombre_completo
+                    "nombre_completo": f"{u.empleado.nombre_completo} ({u.cargo.nombre})"
                 })
         return resultado
