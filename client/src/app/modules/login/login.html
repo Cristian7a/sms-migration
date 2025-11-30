@@ -1,34 +1,81 @@
-
-<div class="ventana"> 
-<div class="ven_login">
-  <div class="cerrar"><a href="javascript:cerrarventana('.ventana');">x</a></div>
-      <form method="post" id="formregistro"  action="app/config/validar.php" name="formregistro">
-                    <h2>Iniciar Sesión</h2>
-                   <hr>
-                    <table class="tabla_ven">
-                        <tr>
-                            <td width="90px" height="30px">E-mail:</td>
-                            <td width="200px" ><input type="text" id="user" name="user" /></td>
-
-                        </tr>
-                        <tr>
-                            <td height="30px">Contraseña:</td>
-                            <td><input type="password" id="pw" name="pw" /></td>
-                        </tr>
-
-                        
-                    
-                        <tr>
-                         <td height="45px"></td> 
-                      <td>
-                    <div class="buttons">
-            <input type="submit" class="boton_purple"  value="Ingresar" name="enviar" id="enviar">
-          </div> </td></tr>
-        </table>
-
-      </form>
+<div class="ventana">
+  <div class="ven_login">
+    <div class="cerrar">
+      <a href="javascript:cerrarventana('.ventana');">x</a>
+    </div>
+    <form id="formregistro" name="formregistro">
+      <h2>Iniciar Sesión</h2>
+      <hr />
+      <table class="tabla_ven">
+        <tr>
+          <td width="90px" height="30px">E-mail:</td>
+          <td width="200px">
+            <input type="text" id="user" name="user" required />
+          </td>
+        </tr>
+        <tr>
+          <td height="30px">Contraseña:</td>
+          <td><input type="password" id="pw" name="pw" required /></td>
+        </tr>
+        <tr>
+          <td height="45px"></td>
+          <td>
+            <div class="buttons">
+              <input
+                type="submit"
+                class="boton_purple"
+                value="Ingresar"
+                id="btn-ingresar"
+              />
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div
+        id="mensaje-error"
+        style="color: red; text-align: center; margin-top: 10px; display: none"
+      ></div>
+    </form>
   </div>
+</div>
 
- </div>
- </div>
-</body>
+<script src="../public/assets/js/api/config.js"></script>
+<script src="../public/assets/js/api/auth.service.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if (typeof AuthService === "undefined") {
+      console.error("Error: AuthService no cargó.");
+      return;
+    }
+
+    $("#formregistro").on("submit", function (e) {
+      e.preventDefault();
+      var email = $("#user").val();
+      var password = $("#pw").val();
+      var $btn = $("#btn-ingresar");
+      var $msg = $("#mensaje-error");
+
+      $btn.val("Ingresando...").prop("disabled", true);
+      $msg.hide();
+
+      AuthService.login(email, password)
+        .done(function (response) {
+          window.location.href = "index.php";
+        })
+        .fail(function (xhr) {
+          console.error("Error Login:", xhr);
+          $btn.val("Ingresar").prop("disabled", false);
+          var errorTexto = "Error de conexión";
+          if (xhr.responseJSON && xhr.responseJSON.error) {
+            errorTexto = xhr.responseJSON.error;
+          } else if (xhr.status === 401) {
+            errorTexto = "Credenciales incorrectas";
+          }
+          $msg.text(errorTexto).show();
+        });
+    });
+  });
+</script>
+
+<script src="app/styles/theme_2/js/vendor/jquery-1.11.2.min.js"></script>
