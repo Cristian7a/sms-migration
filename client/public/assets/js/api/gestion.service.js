@@ -61,4 +61,28 @@ var GestionService = {
       dataType: "json",
     });
   },
+
+  obtenerOperaciones: function () {
+    return $.ajax({
+      url: ApiConfig.baseUrl + "/gestion/catalogos/operaciones",
+      method: "GET",
+      headers: ApiConfig.getHeaders(),
+    });
+  },
+
+  obtenerActividades: function (idOperacion) {
+    return $.ajax({
+      url: ApiConfig.baseUrl + "/gestion/catalogos/actividades/" + idOperacion,
+      method: "GET",
+      headers: ApiConfig.getHeaders(),
+    });
+  },
+
+  obtenerGenericos: function (idActividad) {
+    return $.ajax({
+      url: ApiConfig.baseUrl + "/gestion/catalogos/genericos/" + idActividad,
+      method: "GET",
+      headers: ApiConfig.getHeaders(),
+    });
+  },
 };

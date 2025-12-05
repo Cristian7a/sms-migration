@@ -61,3 +61,30 @@ class Responsable(db.Model):
     fecha_notificacion = db.Column('FECNOT', db.Date)
     fecha_limite = db.Column('FECLIM', db.Date)
     propuesta_id = db.Column('PRORES', db.Integer, db.ForeignKey('pro.IDEPRO'), nullable=False)
+
+# Tabla TOP (Tipo de Operación)
+class TipoOperacion(db.Model):
+    __tablename__ = 'top'
+    id = db.Column('IDETOP', db.Integer, primary_key=True)
+    nomenclatura = db.Column('NMTTOP', db.String(10))
+    descripcion = db.Column('DESTOP', db.String(200))
+
+    # Relación con TAC
+    actividades = db.relationship('TipoActividad', backref='operacion', lazy=True)
+
+# Tabla TAC (Tipo de Actividad)
+class TipoActividad(db.Model):
+    __tablename__ = 'tac'
+    id = db.Column('IDETAC', db.Integer, primary_key=True)
+    descripcion = db.Column('DESTAC', db.String(200))
+    operacion_id = db.Column('TACTOP', db.Integer, db.ForeignKey('top.IDETOP'))
+
+    # Relación con EJM
+    ejemplos = db.relationship('EjemploPeligro', backref='actividad', lazy=True)
+
+# Tabla EJM (Ejemplos de Peligro / Genéricos)
+class EjemploPeligro(db.Model):
+    __tablename__ = 'ejm'
+    id = db.Column('IDEEJM', db.Integer, primary_key=True)
+    descripcion = db.Column('DESEJM', db.String(500))
+    actividad_id = db.Column('EJMTAC', db.Integer, db.ForeignKey('tac.IDETAC'))

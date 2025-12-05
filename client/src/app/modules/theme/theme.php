@@ -3,10 +3,10 @@ require_once("config/conex.php");
 mysqli_select_db($conex, $database_conex);?>
 <html>
 <link rel='stylesheet' id='plantilla'  href='styles/templates/plantilla.css' type='text/css' media='all' />
-        <link rel="stylesheet" href="app/styles/theme_2/css/fuente.css">
-        <link rel="stylesheet" href="app/styles/theme_2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="app/styles/theme_2/css/font-awesome.min.css">
-        <link rel="stylesheet" href="app/styles/theme_2/css/style.css">
+        <link rel="stylesheet" href="styles/theme_2/css/fuente.css">
+        <link rel="stylesheet" href="styles/theme_2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/theme_2/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles/theme_2/css/style.css">
 <div class="barra_login">
 <?php if ($_SESSION["foto"]==""){ ?>
 <div class="loginimage"><a href="modules/profile"><IMG height="35px" SRC="../../public/assets/images/usuario.png"></a></div> <?php }else { ?>

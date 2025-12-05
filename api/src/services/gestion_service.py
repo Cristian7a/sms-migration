@@ -12,12 +12,12 @@ class GestionService:
         """
         Crea una propuesta ligada a un riesgo específico e inicializa su monitoreo.
         """
-        # 1. Verificar que el riesgo exista
+        
         riesgo = Riesgo.query.get(datos.riesgo_id)
         if not riesgo:
             raise ValueError("Riesgo no encontrado")
 
-        # 2. Crear la Propuesta
+        
         nueva_propuesta = Propuesta(
             descripcion=datos.descripcion,
             riesgo_id=datos.riesgo_id,
@@ -30,8 +30,7 @@ class GestionService:
         db.session.add(nueva_propuesta)
         db.session.flush() # Para obtener el ID de la propuesta (nueva_propuesta.id)
 
-        # 3. Crear Monitoreo Inicial (Tabla MONPRO) - Igual que alta_pro.php
-        # La relación es 1 a 1, el ID de monpro es el mismo que el de la propuesta
+        
         nuevo_monitoreo = MonitoreoPropuesta(
             id=nueva_propuesta.id,
             estatus='NO HAN SIDO IMPLEMENTADAS',
@@ -41,8 +40,6 @@ class GestionService:
         )
         db.session.add(nuevo_monitoreo)
 
-        # 4. Actualizar Involucrados (INV) - Opcional, según tu lógica de negocio original
-        # Si necesitas marcar firmas, hazlo aquí.
 
         db.session.commit()
 
@@ -56,7 +53,7 @@ class GestionService:
             peligro = Peligro(reporte_id=datos.reporte_id)
             db.session.add(peligro)
         
-        # Actualizar datos
+        
         peligro.consecuencia = datos.condicion
         peligro.objetivo = datos.objeto
         peligro.actividad = datos.actividad
@@ -67,8 +64,11 @@ class GestionService:
         peligro.gestor = nombre_gestor
         peligro.fecha = date.today()
 
+        # Forzamos que el INSERT/UPDATE de la tabla PEL viaje a la BD
+        # para que la tabla MON pueda encontrar la llave foránea (REPPEL).
+        db.session.flush() 
         
-        # uso de SQL raw para no romper si no se ha creado el modelo MON.
+        
         sql_check = text("SELECT PELMON FROM MON WHERE PELMON = :id")
         result = db.session.execute(sql_check, {'id': datos.reporte_id}).fetchone()
         
@@ -76,7 +76,9 @@ class GestionService:
             sql_insert = text("INSERT INTO MON (PELMON, MSMMON, PSMMON, PSOMON, DIFMON, MITMON, ESTMON) VALUES (:id, '', '', '', '', '', 'ABIERTO')")
             db.session.execute(sql_insert, {'id': datos.reporte_id})
 
+        
         db.session.commit()
+        
         return {"mensaje": "Gestión guardada correctamente"}
     
     def obtener_peligro(self, reporte_id: int) -> PeligroResponseDTO:

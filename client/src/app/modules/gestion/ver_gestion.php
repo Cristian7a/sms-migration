@@ -2,11 +2,28 @@
 session_start();
 if (isset($_SESSION["user"])){ 
      if ($_SESSION["nivel"]<=2){  
-$user=$_SESSION['user'];
-if (isset($_GET['ven'])){
-	$ventana=$_GET['ven']; ?>
-<?php
-} 
+        $user=$_SESSION['user'];
+
+        require_once("../../config/conex.php"); 
+        mysqli_select_db($conex, $database_conex);
+
+        $iderep_actual = $_GET['IDEREP'];
+        
+        
+        $abrir_modal_obligatorio = "false"; 
+
+       
+        $sql_check = "SELECT REPPEL FROM PEL WHERE REPPEL = $iderep_actual";
+        $res_check = mysqli_query($conex, $sql_check);
+
+        
+        if (mysqli_num_rows($res_check) == 0) {
+            $abrir_modal_obligatorio = "true";
+        }
+
+        if (isset($_GET['ven'])){
+            $ventana=$_GET['ven']; 
+        } 
 ?>
 <html>
 <link rel='stylesheet' id='plantilla'  href='css/plantilla.css' type='text/css' media='all' />
@@ -22,7 +39,7 @@ if (isset($_GET['ven'])){
 <script src = "js/asignar_responsable.js"></script>
 <script src = "js/responsable_ejecutar.js"></script>
 <script src = "js/validar_ejemplo_taxonomia.js"></script>
-<!--<script src = "js/validar_comen.js"></script>-->
+<script src = "js/validar_ges.js"></script> 
 <script src = "js/validar_eva.js"></script>
 <script src = "../js/jquery-migrate-1.2.1.min.js"></script>
 
@@ -40,13 +57,9 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
       
     ?>
     
-
-
-
     <body>
     <div style="height:92%;overflow-y: scroll; margin-left:1.5em;"> 
   
-
    <div class="f2"> 
     <br>
     <div style="width:33%;float:left;height:100px;">
@@ -78,11 +91,9 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
     </div>
  
             <div style="margin-top:5em">
-            	<h2 >Componentes específicos del peligro y consecuencias potenciales específicas del peligro</h2>
+                <h2 >Componentes específicos del peligro y consecuencias potenciales específicas del peligro</h2>
             </div>
             
-       
-        
             <div  style="overflow: auto">
             <table >
                <thead style="background:#16365C;color: #fff;"><tr>
@@ -90,8 +101,6 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
                 <th bgcolor="green">C</th>
                 <th bgcolor="#FFF000"></th>
                 
-    
-
             </tr>
                 <tr>
                   
@@ -105,8 +114,6 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
                 <th></th>
                 <th></th>
                
-               
-
             </tr></thead>
 
             <TBODY id="rie">
@@ -165,13 +172,6 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
 </div>
 <?php include("pestaña.php");  ?>
 
-
-
-
-
-
-
-        
    </div> 
 
     </body>
@@ -184,7 +184,6 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
          <div class="ventana_3">
             <?php include("ventanas_modales/e_ges.html"); ?>
         </div>
-
          <div class="ventana_4">
             <?php include("ventanas_modales/e_mon.html"); ?>
         </div>
@@ -247,30 +246,14 @@ if($theme==1){include("menu_ver_gestion.html");}else{include("menus_2/menu_ver_g
         </div>
          
 
-
-
 <script type="text/javascript">
-
-boton_toggle('boton_o','mostrar');
-boton_toggle('boton_o2','mostrar2');
-<?php $ide=$_GET['IDEREP'];?>
-cargari_rep(<?php echo($ide);?>);
-cargari_rep2(<?php echo($ide);?>);
-cargarti_emp(<?php echo($ide);?>);
-cargarti_pel(<?php echo($ide);?>);
-cargar_rie(<?php echo($ide);?>);
-checar_reg_pel(<?php echo($ide);?>);
-cargar_coo("area1");
-cargar_coo("area_res");
-cargar_coo("area_res_asignar");
-document.getElementById("defaultOpen").click();
-
-
-
+    window.idReporte = <?php echo $_GET['IDEREP']; ?>;
+    window.faltaGestionar = <?php echo $abrir_modal_obligatorio; ?>;
 </script>
-   
 
- </html>
+<script src="js/ver_gestion.js"></script>
+
+</html>
 <?php 
  }else{
     session_destroy();
@@ -279,4 +262,3 @@ document.getElementById("defaultOpen").click();
 }else{ 
     header("Location: ../" );}
  ?>
-    

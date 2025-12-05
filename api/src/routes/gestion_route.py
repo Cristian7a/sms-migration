@@ -5,6 +5,7 @@ from pydantic import ValidationError
 from src.schemas.gestion_dto import PropuestaCreateDTO, PeligroUpdateDTO, RiesgoCreateDTO, ResponsableUpdateDTO, ResponsableEjecucionCreateDTO
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from src.models.usuario_model import Usuario
+from src.models.gestion_model import TipoOperacion, TipoActividad, EjemploPeligro
 
 
 gestion_bp = Blueprint('gestion_api', __name__)
@@ -15,10 +16,8 @@ servicio = GestionService()
 def crear_propuesta():
     try:
         data = request.json
-        # Validamos entrada
         dto = PropuestaCreateDTO(**data)
         
-        # Ejecutamos lógica
         resultado = servicio.crear_propuesta(dto)
         
         return jsonify(resultado.model_dump()), 201
@@ -100,3 +99,41 @@ def agregar_ejecutor():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'error': 'Error al asignar ejecutor'}), 500
+    
+@gestion_bp.route('/catalogos/operaciones', methods=['GET'])
+@jwt_required()
+def obtener_operaciones():
+    try:
+        
+        operaciones = TipoOperacion.query.order_by(TipoOperacion.nomenclatura).all()
+        resultado = [
+            {
+                "id": op.id,
+                "nombre": f"{op.nomenclatura} - {op.descripcion}"
+            } for op in operaciones
+        ]
+        return jsonify(resultado), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@gestion_bp.route('/catalogos/actividades/<int:id_operacion>', methods=['GET'])
+@jwt_required()
+def obtener_actividades(id_operacion):
+    try:
+        
+        actividades = TipoActividad.query.filter_by(operacion_id=id_operacion).all()
+        resultado = [{"id": a.id, "nombre": a.descripcion} for a in actividades]
+        return jsonify(resultado), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@gestion_bp.route('/catalogos/genericos/<int:id_actividad>', methods=['GET'])
+@jwt_required()
+def obtener_genericos(id_actividad):
+    try:
+        
+        genericos = EjemploPeligro.query.filter_by(actividad_id=id_actividad).all()
+        resultado = [{"id": a.id, "nombre": a.descripcion} for a in genericos]
+        return jsonify(resultado), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
