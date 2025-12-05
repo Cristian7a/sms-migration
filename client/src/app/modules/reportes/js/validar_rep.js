@@ -1,7 +1,4 @@
 $(function () {
-  console.log("--> 3.0 EJECUTANDO PARCHE FINAL DE SELECTORES <--");
-
-  // Esto desconecta cualquier evento "change" antiguo que esté bloqueando los selects
   $("#area").off("change");
   $("#emp").off("change");
   $("#lugsus").off("change");
@@ -14,13 +11,12 @@ $(function () {
 
     promesa
       .done(function (res) {
-        var lista = res.data || res; // Detecta si viene en .data o directo
+        var lista = res.data || res;
 
         $sel.empty().append('<option value="">-- SELECCIONE --</option>');
 
         if (lista && lista.length > 0) {
           $.each(lista, function (i, item) {
-            // Protección contra undefined
             var texto = item[keyTexto] || "Sin Nombre";
             var id = item[keyId];
 
@@ -30,7 +26,6 @@ $(function () {
           $sel.append('<option value="">No hay datos</option>');
         }
 
-        // Reactivar el select por si el código anterior lo deshabilitó
         $sel.prop("disabled", false);
       })
       .fail(function (xhr) {
@@ -39,13 +34,13 @@ $(function () {
       });
   }
 
-  // 1. Cargar Áreas
+  // Cargar Áreas
   llenarSelect("#area", ReportesService.obtenerAreas(), "id", "nombre");
 
-  // 2. Cargar Lugares
+  // Cargar Lugares
   llenarSelect("#lugsus", ReportesService.obtenerLugares(), "id", "nombre");
 
-  // 3. Cargar Empleados
+  // Cargar Empleados
   llenarSelect(
     "#emp",
     ReportesService.obtenerEmpleados(),
@@ -87,8 +82,6 @@ $(function () {
         lugar_id: parseInt($("#lugsus").val()) || null,
         frecuencia: $("#freeve").val() || "NINGUNA",
       };
-
-      console.log("Enviando JSON Corregido:", datosDTO);
 
       ReportesService.crear(datosDTO)
         .done(function () {
